@@ -16,18 +16,17 @@ function addUser(){
 		url:'addUser',
 		data:ser_data,
 		success:function(data){
-			if(data=='1'){
-				alert("passwords not equals")
-			}
-			else if(data=='OK'){
-				alert("OK");
+			if(data=='OK'){
+				alert("Registration was successful.");
+				$(location).attr('href', 'core/login');
+			}else if(data=='1'){
+				alert("passwords not equals");
 			}
 			else if(data=='ERROR'){
 				alert("1 ERROR");
 			}
 			
-		},
-		error:function(data){
+		},error:function(data){
 			alert(data);
 		}
 	});

@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.CollectionId;
+
 @Entity
 @Table(name="userTable")
 public class User {
@@ -24,6 +26,7 @@ public class User {
 	private String name;
 	private String surname;
 	private String email;
+	
 	private String pass;
 	private boolean active = false;
 	private Date create_date = new Date();

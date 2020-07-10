@@ -25,8 +25,6 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(@RequestParam(value="status", required=false) String status, Model model) {
 		if(status != null){
-			System.out.println(status);
-		
 			if(status.equals("ok")){
 			model.addAttribute("status","transaction successful");
 			}
@@ -41,11 +39,19 @@ public class LoginController {
 		return "register";
 	}
 	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(Model model,HttpServletRequest request) {
+		request.getSession().setAttribute("user", null);
+		return "redirect:/login";
+	}
+	
 	//login.js control user
 	@RequestMapping(value="/controlUser",method=RequestMethod.POST)
 	public ResponseEntity<String> controlUser(@RequestBody User user, HttpServletRequest request){
 		User userm=userService.getFindByUsernameAndPass(user);
 		if(userm != null){
+			
+			request.getSession().setAttribute("user", userm);
 			return new ResponseEntity<>("OK",HttpStatus.OK);
 		}
 		return new ResponseEntity<>("ERROR",HttpStatus.OK);
@@ -65,7 +71,7 @@ public class LoginController {
 	@RequestMapping(value="/addUser",method=RequestMethod.POST)
 	public ResponseEntity<String> addUser(@RequestBody User user, HttpServletRequest request){
  		int status=control(user);
-		if(status == 1){
+		if(status != 0){
 			return new ResponseEntity<>(status+"",HttpStatus.OK);
 		}
 		System.out.println(user.toString());
