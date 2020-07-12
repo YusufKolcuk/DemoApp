@@ -18,7 +18,7 @@ function addUser(){
 		success:function(data){
 			if(data=='OK'){
 				alert("Registration was successful.");
-				$(location).attr('href', 'core/login');
+				$(location).attr('href', 'login');
 			}else if(data=='1'){
 				alert("passwords not equals");
 			}

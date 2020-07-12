@@ -53,6 +53,14 @@ public class LoginFilter implements Filter {
 			chain.doFilter(request, response);
 			return;
 		}
+		if(req.getRequestURI().contains("table")){
+			chain.doFilter(request, response);
+			return;
+		}
+		if(req.getRequestURI().contains("generate/excel.htm")){
+			chain.doFilter(request, response);
+			return;
+		}
 		
 		
 		User user = (User) req.getSession().getAttribute("user");

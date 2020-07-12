@@ -33,7 +33,7 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
-	
+
 
 		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 		<dependency>
@@ -42,6 +42,21 @@
 			<version>42.2.8</version>
 		</dependency>
 
+
+
+		<!-- dependency used for XLSX file format -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.17</version>
+		</dependency>
+
+		<!-- dependency used for XLS older file format (added for information) -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.17</version>
+		</dependency>
 
 
 
@@ -153,13 +168,13 @@
 		</dependency>
 		<!-- ############### Hibernate ############### -->
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-		
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.1.3.Final</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>

@@ -1,7 +1,10 @@
  package com.yusufkolcuk.core;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +35,18 @@ public class HomeController {
 	public String error_404(Model model) {
 		
 		return "error_404";
+	}
+	
+	@RequestMapping(value = "/table", method = RequestMethod.GET)
+	public String table(Model model) throws InvalidFormatException, IOException {
+		
+	
+		
+		return "table";
+		
+		
+		
+		
 	}
 	
 }
