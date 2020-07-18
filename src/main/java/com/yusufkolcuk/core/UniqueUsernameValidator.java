@@ -4,10 +4,14 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 
 import com.yusufkolcuk.entity.User;
 import com.yusufkolcuk.service.UserService;
 
+@Controller
+@Validated
 public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsername, String>{
 	
 	@Autowired
@@ -17,6 +21,7 @@ public class UniqueUsernameValidator implements ConstraintValidator<UniqueUserna
 	public boolean isValid(String username, ConstraintValidatorContext context) {
 		User user = userRepository.getFindByUsername(username);
 		if(user != null) {
+			System.out.println("uniq!!!!!");
 			return false;
 		}
 		return true;

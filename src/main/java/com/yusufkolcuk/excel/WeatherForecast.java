@@ -1,7 +1,16 @@
 package com.yusufkolcuk.excel;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="WeatherForecast")
 public class WeatherForecast {
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int WeatherId;
 	private String City;
 	private int MaximumWF;
@@ -30,7 +39,6 @@ public class WeatherForecast {
 	public void setMinimumWF(int minimumWF) {
 		MinimumWF = minimumWF;
 	}
-	
 	
 
 }

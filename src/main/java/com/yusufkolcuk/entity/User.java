@@ -12,6 +12,8 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.CollectionId;
 
+import com.yusufkolcuk.core.UniqueUsername;
+
 @Entity
 @Table(name="userTable")
 public class User {
@@ -20,8 +22,9 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable=false)
-	private String username;
+	//@UniqueUsername
+	@Column(unique = true)
+	private String username;	
 	
 	private String name;
 	private String surname;

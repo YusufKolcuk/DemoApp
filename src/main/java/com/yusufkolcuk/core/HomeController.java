@@ -40,12 +40,7 @@ public class HomeController {
 	@RequestMapping(value = "/table", method = RequestMethod.GET)
 	public String table(Model model) throws InvalidFormatException, IOException {
 		
-	
-		
 		return "table";
-		
-		
-		
 		
 	}
 	

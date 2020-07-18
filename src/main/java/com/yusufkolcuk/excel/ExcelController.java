@@ -19,6 +19,9 @@ public class ExcelController {
    HttpServletResponse response) throws Exception {
   System.out.println("Calling generateExcel()...");
   
+ // List<WeatherForecast> weatherForecasts = null; // transfer data from db by usýng dao / table see weatherforecast table
+
+  
   WeatherForecast c1 = new WeatherForecast();
   c1.setWeatherId(1);
   c1.setCity("Istanbul");
@@ -35,9 +38,9 @@ public class ExcelController {
   c3.setWeatherId(3);
   c3.setCity("Malatya");
   c3.setMinimumWF(33);
-  c3.setMinimumWF(37);
+  c3.setMaximumWF(37);
   
-  List weatherForecasts = new ArrayList();
+  List<WeatherForecast> weatherForecasts = new ArrayList<WeatherForecast>();
   weatherForecasts.add(c1);
   weatherForecasts.add(c2);
   weatherForecasts.add(c3);

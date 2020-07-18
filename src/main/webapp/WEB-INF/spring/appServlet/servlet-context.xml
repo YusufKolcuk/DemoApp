@@ -25,7 +25,9 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+
 	</beans:bean>
+
 
 
 
@@ -36,12 +38,15 @@
 		<beans:property name="password" value="${database.password}" />
 
 	</beans:bean>
-	
-	
+
+
+
 	<!-- Excel -->
-	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+	<beans:bean id="viewResolver"
+		class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
 		<beans:property name="order" value="1" />
 		<beans:property name="basename" value="views" />
+
 	</beans:bean>
 
 	<beans:bean id="sessionFactory"

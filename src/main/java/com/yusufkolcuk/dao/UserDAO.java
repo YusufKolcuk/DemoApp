@@ -7,13 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.yusufkolcuk.entity.User;
+import com.yusufkolcuk.security.Encryption;
 
 @Repository
 public class UserDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
-	
 	public Long insert(User user){
+		user.setPass(Encryption.sha256(user.getPass()));
 		return (Long) sessionFactory.getCurrentSession().save(user);
 	}
 	
@@ -23,9 +24,10 @@ public class UserDAO {
 	
 	//read
 	public User getFindByUsernameAndPass(String username, String pass){
+		String password= Encryption.sha256(pass);
 		Query query = sessionFactory.getCurrentSession().createQuery("FROM User WHERE username=:username AND pass=:pass AND active=:active")
 				.setString("username", username)
-				.setString("pass", pass)
+				.setString("pass", password)
 				.setBoolean("active", true);
 		User user=null;
 		try {
