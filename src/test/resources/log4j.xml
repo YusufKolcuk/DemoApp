@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.yusufkolcuk.core">
+	<logger name="com.xperta.core">
 		<level value="info" />
 	</logger>
 	

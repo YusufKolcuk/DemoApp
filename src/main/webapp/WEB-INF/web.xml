@@ -41,7 +41,7 @@
   
   <filter>
   	<filter-name>LoginFilter</filter-name>
-  	<filter-class>com.yusufkolcuk.security.LoginFilter</filter-class>
+  	<filter-class>com.xperta.security.LoginFilter</filter-class>
   </filter>
   <filter-mapping>
   	<filter-name>LoginFilter</filter-name>

@@ -10,7 +10,7 @@
 
 
 
-	<context:component-scan base-package="com.yusufkolcuk.*" />
+	<context:component-scan base-package="com.xperta.*" />
 	<context:annotation-config />
 	<annotation-driven />
 
@@ -60,7 +60,7 @@
 				<beans:prop key="hibernate.format_sql">${hibernate.format_sql}</beans:prop>
 			</beans:props>
 		</beans:property>
-		<beans:property name="packagesToScan" value="com.yusufkolcuk.entity" />
+		<beans:property name="packagesToScan" value="com.xperta.entity" />
 	</beans:bean>
 
 	<beans:bean id="hibernateTransactionManager"
