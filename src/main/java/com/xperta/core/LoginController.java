@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.xperta.entity.ExcelTab;
 import com.xperta.entity.User;
+import com.xperta.service.ExcelTabService;
 import com.xperta.service.UserService;
 
 @Controller
@@ -21,6 +24,9 @@ public class LoginController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private ExcelTabService exceltabservice;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(@RequestParam(value="status", required=false) String status, Model model) {
@@ -44,6 +50,7 @@ public class LoginController {
 		request.getSession().setAttribute("user", null);
 		return "redirect:/login";
 	}
+	
 	
 	//login.js control user
 	@RequestMapping(value="/controlUser",method=RequestMethod.POST)
@@ -81,6 +88,15 @@ public class LoginController {
 		}
 		return new ResponseEntity<>("ERROR",HttpStatus.CREATED);
 	}
+	
+	//exceltable.js addUser
+		@RequestMapping(value="/addTable",method=RequestMethod.POST)
+		public ResponseEntity<String> addTable(@RequestBody ExcelTab excelTab, HttpServletRequest request){
+	 		System.out.println(excelTab.toString());
+	 		
+	 		exceltabservice.create(excelTab,request);
+			return new ResponseEntity<>("OK",HttpStatus.CREATED);
+		}
 	
 	//checking information 
 	private int control(User user){

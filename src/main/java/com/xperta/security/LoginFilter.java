@@ -61,7 +61,14 @@ public class LoginFilter implements Filter {
 			chain.doFilter(request, response);
 			return;
 		}
-		
+		if(req.getRequestURI().contains("generate/pdf.htm")){
+			chain.doFilter(request, response);
+			return;
+		}
+		if(req.getRequestURI().contains("addTable")){
+			chain.doFilter(request, response);
+			return;
+		}
 		
 		User user = (User) req.getSession().getAttribute("user");
 		

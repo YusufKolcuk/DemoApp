@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.xperta.entity.User;
-import com.xperta.excel.WeatherForecast;
+import com.xperta.entity.WeatherForecast;
 
 @Repository
 public class WeatherDAO {

@@ -1,4 +1,4 @@
-package com.yusufkolcuk.excel;
+package com.xperta.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
