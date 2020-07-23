@@ -2,14 +2,16 @@ package com.xperta.excel;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.xperta.entity.WeatherForecast;;
+import com.xperta.entity.City;;
 
  
 @Controller
@@ -20,33 +22,17 @@ public class ExcelController {
    HttpServletResponse response) throws Exception {
   System.out.println("Calling generateExcel()...");
   
- // List<WeatherForecast> weatherForecasts = null; // transfer data from db by usýng dao / table see weatherforecast table
+  List<City> cities = null; // transfer data from db by usýng dao / table see weatherforecast table
 
   
-  WeatherForecast c1 = new WeatherForecast();
-  c1.setWeatherId(1);
-  c1.setCity("Istanbul");
-  c1.setMinimumWF(32);
-  c1.setMaximumWF(39);
+  City city = new City();
+  city.setName("Istanbul");
+  city.setTempMin(32.0);
+  city.setTempMax(39.0);
+  cities.add(city);
+
   
-  WeatherForecast c2 = new WeatherForecast();
-  c2.setWeatherId(2);
-  c2.setCity("Ankara");
-  c2.setMinimumWF(28);
-  c2.setMaximumWF(33);
-  
-  WeatherForecast c3 = new WeatherForecast();
-  c3.setWeatherId(3);
-  c3.setCity("Malatya");
-  c3.setMinimumWF(33);
-  c3.setMaximumWF(37);
-  
-  List<WeatherForecast> weatherForecasts = new ArrayList<WeatherForecast>();
-  weatherForecasts.add(c1);
-  weatherForecasts.add(c2);
-  weatherForecasts.add(c3);
-  
-  ModelAndView modelAndView = new ModelAndView("excelView", "weatherForecasts",weatherForecasts);
+  ModelAndView modelAndView = new ModelAndView("excelView", "cities", cities);
   
   return modelAndView;
  }

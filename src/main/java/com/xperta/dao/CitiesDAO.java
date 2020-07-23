@@ -1,27 +1,25 @@
 package com.xperta.dao;
 
+import java.util.List;
+
 import javax.persistence.Query;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import org.hibernate.SessionFactory;
-import com.xperta.entity.Cities;
 
 @Repository
 public class CitiesDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public Cities getAllCities(String name,int value){
-		Query query = sessionFactory.getCurrentSession().createQuery("FROM User ");
-			Cities cities=null;
+	public List getAllCities(){
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM cities");
 			try {
-				cities= (Cities) query.getSingleResult();
-
+				return query.getResultList();
 			} catch (Exception e) {
-				cities=null;
+				System.err.println(e.getMessage());
 			}
-			return cities;	
+			return null;	
 	}
 }

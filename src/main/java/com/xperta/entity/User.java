@@ -10,10 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.hibernate.annotations.CollectionId;
-
-import com.xperta.core.UniqueUsername;
-
 @Entity
 @Table(name="userTable")
 public class User {
@@ -88,7 +84,6 @@ public class User {
 	public void setCreate_date(Date create_date) {
 		this.create_date = create_date;
 	}
-	
 	public String getKeyreg() {
 		return keyreg;
 	}
@@ -107,6 +102,4 @@ public class User {
 				+ email + ", pass=" + pass + ", active=" + active + ", create_date=" + create_date + ", keyreg="
 				+ keyreg + ", pass2=" + pass2 + "]";
 	}
-	
-
 }

@@ -187,6 +187,7 @@
 	              type: 'sunny'
 	            }, {
 	              position: new google.maps.LatLng(38.499817, 43.378143),
+	              
 	              type: 'cloud'
 	            }, {
 	              position: new google.maps.LatLng(41.674965, 26.583481),
