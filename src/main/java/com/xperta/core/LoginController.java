@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.xperta.entity.City;
 import com.xperta.entity.User;
+import com.xperta.service.CitiesService;
 import com.xperta.service.UserService;
 
 // this is a comment!
@@ -25,6 +26,8 @@ public class LoginController {
 	private UserService userService;
 	
 	@Autowired
+	private CitiesService citiesService;
+	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(@RequestParam(value="status", required=false) String status, Model model) {
@@ -92,7 +95,7 @@ public class LoginController {
 		public ResponseEntity<String> addTable(@RequestBody City city, HttpServletRequest request){
 	 		System.out.println(city.toString());
 	 		
-//	 		exceltabservice.create(cities, request);
+	 		//citiesService(city, request);
 			return new ResponseEntity<>("OK",HttpStatus.CREATED);
 		}
 	
@@ -102,8 +105,5 @@ public class LoginController {
 			return 1;
 		}
 		return 0;
-		
-		
 	}
-	
 }
