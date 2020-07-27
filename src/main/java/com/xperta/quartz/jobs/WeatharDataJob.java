@@ -4,15 +4,13 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.xperta.dao.CitiesDAO;
-import com.xperta.entity.City;
 
 /**
  * 
@@ -22,7 +20,7 @@ import com.xperta.entity.City;
  *
  */
 public class WeatharDataJob {
-
+	public static StringBuilder response;
 	
 	CitiesDAO citiesDao;
 	
@@ -71,14 +69,18 @@ public class WeatharDataJob {
 		    //Get Response  
 		    InputStream is = connection.getInputStream();
 		    BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-		    StringBuilder response = new StringBuilder(); // or StringBuffer if Java version 5+
+		    response = new StringBuilder(); // or StringBuffer if Java version 5+
 		    String line;
 		    while ((line = rd.readLine()) != null) {
 		      response.append(line);
 		      response.append('\r');
 		    }
-		    System.out.println(response);
 		    rd.close();
+		    System.out.println(response);
+		    
+
+		    JsonParser.WFJson();
+		    
 		    return response.toString();
 		  } catch (Exception e) {
 		    e.printStackTrace();

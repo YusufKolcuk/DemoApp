@@ -25,9 +25,14 @@ public class ReportCurrentTime
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		WeatharDataJob.executePost("http://api.openweathermap.org/data/2.5/group?id=4099974&appid=294fcf03ced531801723f6d093726c4c&units=metric", urlParameters);
-        System.out.println(
-                "Current time = " + dateFormat.format(new Date()));
+		String key[]={
+				"2633352","2643741","2644688","2654675","2911298","2925535","2950159","2988507","2990969","3120501","3128760","4099974","4140963","4440906"
+		};
+		for (String push : key) {
+			WeatharDataJob.executePost("http://api.openweathermap.org/data/2.5/group?id="+push+"&appid=294fcf03ced531801723f6d093726c4c&units=metric", urlParameters);
+
+		}
+        System.out.println("Current time = " + dateFormat.format(new Date()));
     }
 
 }
