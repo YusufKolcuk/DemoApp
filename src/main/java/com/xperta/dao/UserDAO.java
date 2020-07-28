@@ -1,5 +1,7 @@
 package com.xperta.dao;
 
+import java.util.ArrayList;
+
 import javax.persistence.Query;
 
 import org.hibernate.SessionFactory;
@@ -20,6 +22,11 @@ public class UserDAO {
 	
 	public void update(User user){
 		sessionFactory.getCurrentSession().update(user);
+	}
+	public ArrayList<User> getAll(){
+		Query query = sessionFactory.getCurrentSession().createQuery("select email FROM User");
+		return (ArrayList<User>) query.getResultList();
+
 	}
 	
 	//read

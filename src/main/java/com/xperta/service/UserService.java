@@ -1,5 +1,6 @@
 package com.xperta.service;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,5 +54,10 @@ public class UserService {
 			return true;
 		}else
 			return false;
+	}
+	
+	
+	public ArrayList<User> getAll(){
+		return userDAO.getAll();
 	}
 }

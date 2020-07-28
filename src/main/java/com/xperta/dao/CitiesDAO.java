@@ -29,7 +29,7 @@ public class CitiesDAO {
 	
 	
 	public ArrayList<City> getAllCities(){
-		Query query = sessionFactory.getCurrentSession().createQuery("FROM City");
+		Query query = sessionFactory.getCurrentSession().createQuery("select key FROM City");
 		
 			return (ArrayList<City>) query.getResultList();	
 	}
