@@ -16,24 +16,33 @@ import com.xperta.entity.City;
  * 
  * @author xperta
  *
- */
+*/
 
 @Service
 @Transactional
 public class CitiesService {
 	@Autowired
-	 private CitiesDAO citiesDAO;
+	private CitiesDAO citiesDAO;
    
 	@Transactional
-	public Long create(City city, HttpServletRequest request){
+	public Long create(City city){
 		return citiesDAO.insert(city);
+	}
+	
+	@Transactional
+	public void update(City city){
+		 citiesDAO.update(city);
+	}
+	@Transactional
+	public void persist(City city){
+		 citiesDAO.persist(city);
 	}
 	
 	
 	
-	 public ArrayList<City> getAllCities(){
+	public ArrayList<City> getAllCities(){
 		 return citiesDAO.getAllCities();
-	 }
+	}
 	 
 	
 	
