@@ -4,9 +4,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class JsonParser {
-	static String  name;
-	static int id;
-	static Double temp_min,temp_max,temp,humidity,pressure;
+	public static String  name;
+	public static int id;
+	public static Double temp_min,temp_max,temp,humidity,pressure;
 
 	public static void WFJson(){
 		Object response2=WeatharDataJob.response;

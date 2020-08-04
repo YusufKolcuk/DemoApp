@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.xperta.entity.City;;
+import com.xperta.entity.City;
+import com.xperta.quartz.jobs.JsonParser;;
 
  
 @Controller
@@ -26,9 +27,9 @@ public class ExcelController {
 
   
   City city = new City();
-  city.setName("Istanbul");
-  city.setTempMin(32.0);
-  city.setTempMax(39.0);
+  city.setName(JsonParser.name);
+  city.setTempMin(JsonParser.temp_min);
+  city.setTempMax(JsonParser.temp_max);
   cities.add(city);
 
   

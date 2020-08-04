@@ -70,6 +70,7 @@ public class LoginFilter implements Filter {
 			return;
 		}
 		
+		
 		User user = (User) req.getSession().getAttribute("user");
 		
 		if(user != null){

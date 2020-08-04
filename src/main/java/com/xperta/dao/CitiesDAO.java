@@ -37,8 +37,8 @@ public class CitiesDAO {
 	
 	
 	
-	public List getAllCitiess(){
-		Query query = sessionFactory.getCurrentSession().createQuery("FROM cities");
+	public List<City> getAllCitiess(){
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM City");
 			try {
 				return query.getResultList();
 			} catch (Exception e) {

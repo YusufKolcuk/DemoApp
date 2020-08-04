@@ -1,6 +1,7 @@
 package com.xperta.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -42,6 +43,10 @@ public class CitiesService {
 	
 	public ArrayList<City> getAllCities(){
 		 return citiesDAO.getAllCities();
+	}
+	
+	public List<City> getAllCitiess(){
+		 return citiesDAO.getAllCitiess();
 	}
 	 
 	
