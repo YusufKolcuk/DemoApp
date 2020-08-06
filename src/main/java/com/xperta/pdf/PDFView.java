@@ -17,10 +17,11 @@ import com.xperta.entity.City;
 public class PDFView extends AbstractPdfView {
 	 protected void buildPdfDocument(Map model,Document document, PdfWriter writer, HttpServletRequest req, HttpServletResponse resp) throws Exception {
 	  
-	  City city = (City) model.get("City");
+	  City city = (City) model.get("command");
 	  
-	  Paragraph header = new Paragraph(new Chunk("Generate Pdf USing Spring Mvc",FontFactory.getFont(FontFactory.HELVETICA, 30)));
-	  Paragraph by = new Paragraph(new Chunk("Author ",FontFactory.getFont(FontFactory.HELVETICA, 20)));
+	  Paragraph header = new Paragraph(new Chunk("WEATHER FORECAST",FontFactory.getFont(FontFactory.HELVETICA, 30)));
+	  Paragraph by = new Paragraph(new Chunk("Author "+city.getName(),FontFactory.getFont(FontFactory.HELVETICA, 20)));
+	  
 	  
 	  document.add(header);
 	  document.add(by);

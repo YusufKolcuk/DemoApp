@@ -34,6 +34,12 @@ public class CitiesDAO {
 			return (ArrayList<City>) query.getResultList();	
 	}
 	
+	public ArrayList<City> getAllName(){
+		Query query = sessionFactory.getCurrentSession().createQuery("select name FROM City");
+		
+			return (ArrayList<City>) query.getResultList();	
+	}
+	
 	
 	
 	
