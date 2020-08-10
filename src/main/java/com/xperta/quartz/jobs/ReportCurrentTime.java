@@ -11,17 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.xperta.entity.City;
-import com.xperta.entity.Key;
 import com.xperta.service.CitiesService;
-import com.xperta.service.KeyService;
 
 @Component("reportCurrentTime")
 public class ReportCurrentTime
 {
 	@Autowired
 	CitiesService citiesService;
-	@Autowired
-	KeyService keyService; 
+	
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat(
             "HH:mm:ss");
@@ -36,9 +33,9 @@ public class ReportCurrentTime
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		ArrayList<Key> key_value=keyService.getAllCities();
-		Object[] key_obj=key_value.toArray();
-		System.out.println(key_value);
+		ArrayList<City> id_value=citiesService.getAllId();
+		Object[] key_obj=id_value.toArray();
+		System.out.println(id_value);
 		
 //		String key[]={
 //				"2633352","2643741","2644688","2654675","2911298","2925535","2950159","2988507","2990969","3120501","3128760","4099974","4140963","4440906"

@@ -79,50 +79,24 @@
 			  padding: 2px 8px;
 			  border-radius: 5px;
 			}
-			input[type=text], select {
-			  width: 100%;
-			  padding: 12px 20px;
-			  margin: 8px 0;
-			  display: inline-block;
-			  border: 1px solid #ccc;
-			  border-radius: 4px;
-			  box-sizing: border-box;
-			}
+		
 			
-			input[type=submit] {
-			  width: 100%;
-			  background-color: #4CAF50;
-			  color: white;
-			  padding: 14px 20px;
-			  margin: 8px 0;
-			  border: none;
-			  border-radius: 4px;
-			  cursor: pointer;
-			}
-			
-			input[type=submit]:hover {
-			  background-color: #45a049;
-			}
-			
-			div {
-			  border-radius: 5px;
-			  background-color: #f2f2f2;
-			  padding: 20px;
-			}
+			#map {
+		        height: 400px;  /* The height is 400 pixels */
+		        width: 100%;  /* The width is the width of the web page */
+		       }
 	</style>
 	
 </head>
 <body>
 	<center><B><h1>WEATHER FORECAST</h1></B></center>
-<input type="button" value="Export" onclick="createPDF()" />
-	
+		 <a href="generate/excel.htm">Generate Excel</a>  
+		
 		<a onclick="exportTableToExcel('excelTableData')">
 		<img alt="excel" src="assets/login/images/icons/excel.ico" align="right" width="50" height="50">
 		</a>
+		<input type="image" src="assets/login/images/icons/pdf.ico" align="right" width="50" height="50" id="btnExport" value="Export" />
 		
-		<a href="generate/pdf.htm">
-		<img alt="pdf" src="assets/login/images/icons/pdf.ico" align="right" width="50" height="50">
-		</a>
 		
 		</h1>
 		<table class="blueTable" id="excelTableData">
@@ -130,11 +104,10 @@
 				<th>id</th>
 				<th>name</th>
 				<th>temp</th>
-				<th>temp_min</th>
 				<th>temp_max</th>
-				<th>pressure</th>
+				<th>temp_min</th>
 				<th>humidity</th>
-				<th>key</th>
+				<th>pressure</th>
 		</thead>
 		<tbody>
 			<c:forEach var="emp" items="${listEmp}" varStatus="status">
@@ -146,38 +119,118 @@
 					<td>${emp.tempMin}</td>
 					<td>${emp.humidity}</td>
 					<td>${emp.pressure}</td>
-					<td>${emp.key}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 				
 			
 		</table>
-<script>
-    function createPDF() {
-        var sTable = document.getElementById('excelTableData').innerHTML;
+		
+		
+	<div id="map"></div>
+	<script>
+	  var map;
+	  function initMap() {
+	    map = new google.maps.Map(
+	        document.getElementById('map'),
+	    {center: new google.maps.LatLng(38.020793, -121.887831), zoom: 8});
 
-        var style = "<style>";
-        style = style + "table {width: 100%;font: 17px Calibri;}";
-        style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
-        style = style + "padding: 2px 3px;text-align: center;}";
-        style = style + "</style>";
+	    var icons = {
+	            cloud: {
+	              icon: 'assets/login/images/icons/wfimg.ico', 
+	              
+	            },
+	            sunny: {
+	                icon: 'assets/login/images/icons/sunny.ico', 
+	                
+	              },
+	            rain: {
+	                icon: 'assets/login/images/icons/rainn.ico', 
+	                
+	              },
+	        };
 
-        // CREATE A WINDOW OBJECT.
-        var win = window.open('', '', 'height=700,width=700');
+	          var features = [
+	            {
+	               position: new google.maps.LatLng(53.551086, 9.993682),
+	               type: 'rain'	               	               
+	            }, {
+	               position: new google.maps.LatLng(50.110924, 8.682127),
+	               type: 'sunny'
+	            }, {
+	               position: new google.maps.LatLng(52.520008, 13.404954),
+	               type: 'cloud'
+	            }, {
+	               position: new google.maps.LatLng(48.856613, 2.352222),
+	               type: 'cloud'
+	            }, {
+	               position: new google.maps.LatLng(47.218372, -1.553621),
+	               type: 'rain'
+	            }, {
+	               position: new google.maps.LatLng(40.249540, -3.827210),
+	               type: 'cloud'
+	            }, {
+	               position: new google.maps.LatLng(41.385063, 2.173404),
+	               type: 'cloud'
+	            }, {
+	               position: new google.maps.LatLng(30.267153, -97.743057),
+	               type: 'sunny'
+	           	}, {
+	               position: new google.maps.LatLng(38.892062, -77.019912),
+	               type: 'cloud'
+	            }, {
+	               position: new google.maps.LatLng(39.951061, -75.16562),
+	               type: 'rain'
+	            }, {
+	               position: new google.maps.LatLng(39.960339, -76.734668),
+	               type: 'sunny'
+	            },{
+	               position: new google.maps.LatLng(37.128849, -84.083677),
+	               type: 'rain'
+	            }, {
+	               position: new google.maps.LatLng(33.545948, 33.545948),
+	               type: 'sunny'
+	            },{
+	               position: new google.maps.LatLng(41.673037, -72.945791),
+	               type: 'cloud'
+	            }
+	           
+	          ];
 
-        win.document.write('<html><head>');
-        win.document.write('<title>Profile</title>');   // <title> FOR PDF HEADER.
-        win.document.write(style);          // ADD STYLE INSIDE THE HEAD TAG.
-        win.document.write('</head>');
-        win.document.write('<body>');
-        win.document.write(sTable);         // THE TABLE CONTENTS INSIDE THE BODY TAG.
-        win.document.write('</body></html>');
-
-        win.document.close(); 	// CLOSE THE CURRENT WINDOW.
-
-        win.print();    // PRINT THE CONTENTS.
-    }
+	// Create markers.
+	    for (var i = 0; i < features.length; i++) {
+	      var marker = new google.maps.Marker({
+	        position: features[i].position,
+	        icon: icons[features[i].type].icon,
+	        map: map
+	      });
+	    };
+	  }
+	</script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5j_YT2S6LASn412whtKYe6RdhkVCLfn0&callback=initMap"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>		
+	
+	
+	
+	
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<script type="text/javascript">
+    $("body").on("click", "#btnExport", function () {
+        html2canvas($('#excelTableData')[0], {
+            onrendered: function (canvas) {
+                var data = canvas.toDataURL();
+                var docDefinition = {
+                    content: [{
+                        image: data,
+                        width: 500
+                    }]
+                };
+                pdfMake.createPdf(docDefinition).download("weatherforecast.pdf");
+            }
+        });
+    });
 </script>
 		
 <script type="text/javascript">
