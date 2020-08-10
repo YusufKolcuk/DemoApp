@@ -25,19 +25,9 @@ public class PDFController {
  @RequestMapping(value = "/generate/pdf.htm", method = RequestMethod.GET)
  ModelAndView generateExcel(HttpServletRequest request, HttpServletResponse response) throws Exception {
   System.out.println("Calling generatePDF()...");
-  List<City> pdf_obj = citiesService.getAllName();
-  String yusuf=pdf_obj.toString();
-  System.out.println("asdas:::"+yusuf);
-  City city=new City();
-  city.setName(yusuf);
-  ModelAndView modelAndView = new ModelAndView("pdfView", "command", city);
+  List<City> pdf_obj = citiesService.getAllCitiess();
+
+  ModelAndView modelAndView = new ModelAndView("pdfView", "pdf_obj", pdf_obj);
   return modelAndView;
-  
-	//System.out.println("deneme123"+JsonParser.name);
-	
-
-  
-
-  
  }
 }

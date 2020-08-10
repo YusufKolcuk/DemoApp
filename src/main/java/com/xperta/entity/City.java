@@ -69,6 +69,12 @@ public class City {
 	public void setKey(Long key) {
 		this.key = key;
 	}
+	@Override
+	public String toString() {
+		return "City [id=" + id + ", name=" + name + ", temp=" + temp + ", tempMax=" + tempMax + ", tempMin=" + tempMin
+				+ ", humidity=" + humidity + ", pressure=" + pressure + ", key=" + key + "]";
+	}
+	
 
 	
 

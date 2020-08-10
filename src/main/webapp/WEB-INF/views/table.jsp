@@ -91,6 +91,8 @@
 <body>
 	<center><B><h1>WEATHER FORECAST</h1></B></center>
 		 <a href="generate/excel.htm">Generate Excel</a>  
+		  <a href="generate/pdf.htm">Generate Pdf</a>  
+		 
 		
 		<a onclick="exportTableToExcel('excelTableData')">
 		<img alt="excel" src="assets/login/images/icons/excel.ico" align="right" width="50" height="50">
