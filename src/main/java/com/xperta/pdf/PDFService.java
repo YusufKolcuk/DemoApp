@@ -29,6 +29,7 @@ public class PDFService {
 		
 		
 		public String exportReport(String reportFormat) throws FileNotFoundException, JRException {
+			/*
 		        List<City> citys = citiesService.getAllCities();
 				File file=ResourceUtils.getFile("classpath:cities.jrxml");
 		        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
@@ -41,6 +42,8 @@ public class PDFService {
 		        }
 		
 		        return "report generated in path : " + "C:\\Users\\user\\Desktop\\Report";
-		    }
+		   */
+			return reportFormat;
+	}
 
 }
