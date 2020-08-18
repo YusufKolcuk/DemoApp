@@ -22,7 +22,7 @@ import com.xperta.entity.User;
 import com.xperta.service.CitiesService;
 import com.xperta.service.UserService;
 
-// GIT TEST!
+// GIT TEST 2222!
 @Controller
 public class LoginController {
 
