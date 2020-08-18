@@ -1,8 +1,5 @@
 package com.xperta.core;
 
-import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +12,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.xperta.entity.City;
 import com.xperta.entity.User;
 import com.xperta.service.CitiesService;
 import com.xperta.service.UserService;
 
-// GIT TEST 3!
+// GIT TEST 4!
 @Controller
 public class LoginController {
 
