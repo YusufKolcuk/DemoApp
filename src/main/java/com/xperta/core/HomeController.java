@@ -17,7 +17,7 @@ import com.xperta.service.CitiesService;
 @Controller
 public class HomeController {
 
-	
+	//testtt
 	private static final Logger Log=LoggerFactory.getLogger(HomeController.class);
 	public static String url = "http://localhost:8080/core/";
 	@Autowired
