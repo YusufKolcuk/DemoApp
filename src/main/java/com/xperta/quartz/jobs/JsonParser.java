@@ -4,9 +4,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class JsonParser {
-	public static String  name;
+	public static String  name,description;
 	public static int id;
-	public static Double temp_min,temp_max,temp,humidity,pressure;
+	public static Double temp_min,temp_max,temp,humidity,pressure,lat,lon;
 
 	public static void WFJson(){
 		Object response2=WeatharDataJob.response;
@@ -22,16 +22,16 @@ public class JsonParser {
 	    	id= object.getInt("id");
 	    	name=object.getString("name");
 	    	JSONObject coord_obj=object.getJSONObject("coord");
-	    	Double lon = coord_obj.getDouble("lon");
-	    	Double lat = coord_obj.getDouble("lat");
+	    	 lon = coord_obj.getDouble("lon");
+	    	 lat = coord_obj.getDouble("lat");
 	    	JSONArray weather_ary=object.getJSONArray("weather");
 	    	System.out.println("weather_ary : "+weather_ary);
-//	    	for (int j=0;j<weather_ary.length();j++) {
-//		    	JSONObject weather_obj = json_array.getJSONObject(j);
-//		    	String description=weather_obj.getString("main");
-//		    	System.out.println("description : "+description);
-//		    	
-//			}
+	    	for (int j=0;j<1;j++) {
+		    	JSONObject weather_obj = weather_ary.getJSONObject(j);
+		    	description=weather_obj.getString("main");
+		    	System.out.println("description : "+description);
+		    	
+			}
 	    	JSONObject main_obj=object.getJSONObject("main");
 	    	 temp_min = main_obj.getDouble("temp_min");
 	    	 temp_max = main_obj.getDouble("temp_max");

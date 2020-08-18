@@ -23,13 +23,6 @@ public class HomeController {
 	@Autowired
 	private CitiesService citiesService;
 	
-	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String main(Model model) {
-		
-		return "redirect:/login";
-	}
-	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Model model,HttpServletRequest req) {
 		model.addAttribute("user",req.getSession().getAttribute("user"));
@@ -37,19 +30,26 @@ public class HomeController {
 	}
 	@RequestMapping(value = "/table")
 	public ModelAndView  table(ModelAndView  model,HttpServletRequest req) {
-		List<City> listEmp = citiesService.getAllCitiess();
-		model.addObject("listEmp", listEmp);
+		List<City> cities = citiesService.getAllCities();
+		model.addObject("cities", cities);
 		model.setViewName("table");
 		Log.info("trial 1 ");
 		
 		return model;
 	}
 	
-	
 	@RequestMapping(value = "/error_404", method = RequestMethod.GET)
 	public String error_404(Model model) {
 		
 		return "error_404";
 	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String homePage (Model model) {
+		
+		return "welcome_page";
+	}
+	
+
 	
 }

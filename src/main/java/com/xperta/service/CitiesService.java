@@ -41,9 +41,7 @@ public class CitiesService {
 	
 	
 	
-	public ArrayList<City> getAllCities(){
-		 return citiesDAO.getAllCities();
-	}
+	
 	
 	public ArrayList<City> getAllName(){
 		 return citiesDAO.getAllName();
@@ -53,8 +51,8 @@ public class CitiesService {
 		 return citiesDAO.getAllId();
 	}
 	
-	public List<City> getAllCitiess(){
-		 return citiesDAO.getAllCitiess();
+	public List<City> getAllCities(){
+		 return citiesDAO.getAllCities();
 	}
 	 
 	

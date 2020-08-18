@@ -71,15 +71,18 @@ public class LoginFilter implements Filter {
 		}
 		
 		
+		
 		User user = (User) req.getSession().getAttribute("user");
 		
 		if(user != null){
 			chain.doFilter(request, response);
 			return;
 		}
+		/*
 		else{
 			res.sendRedirect(HomeController.url+"login");
 		}
+		*/
 		
 		
 		chain.doFilter(request, response);

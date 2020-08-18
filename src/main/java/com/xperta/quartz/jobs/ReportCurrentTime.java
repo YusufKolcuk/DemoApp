@@ -51,8 +51,10 @@ public class ReportCurrentTime
 			city.setTempMax((double)JsonParser.temp_max);
 			city.setTempMin((double)JsonParser.temp_min);
 			city.setPressure((double)JsonParser.pressure);
-			city.setKey((Long) push);
-
+			city.setLat((double)JsonParser.lat);
+			city.setLon((double)JsonParser.lon);
+			city.setDesc(JsonParser.description);
+			
 			citiesService.update(city);
 		}
 		

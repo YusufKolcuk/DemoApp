@@ -20,85 +20,35 @@
 	<link rel="stylesheet" type="text/css" href="assets/login/css/main.css">
 	
 	<style type="text/css">
-			table.blueTable {
-			  font-family: "Arial Black", Gadget, sans-serif;
-			  border: 6px solid #1C6EA4;
-			  background-color: #EEEEEE;
-			  width: 100%;
-			  height: 200px;
-			  text-align: left;
-			  border-collapse: collapse;
-			}
-			table.blueTable td, table.blueTable th {
-			  border: 4px solid #AAAAAA;
-			  padding: 10px 2px;
-			}
-			table.blueTable tbody td {
-			  font-size: 15px;
-			}
-			table.blueTable tr:nth-child(even) {
-			  background: #D0E4F5;
-			}
-			table.blueTable thead {
-			  background: #1C6EA4;
-			  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-			  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-			  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
-			  border-bottom: 2px solid #444444;
-			}
-			table.blueTable thead th {
-			  font-size: 20px;
-			  font-weight: bold;
-			  color: #FFFFFF;
-			  border-left: 2px solid #D0E4F5;
-			}
-			table.blueTable thead th:first-child {
-			  border-left: none;
-			}
 			
-			table.blueTable tfoot {
-			  font-size: 8px;
-			  font-weight: bold;
-			  color: #FFFFFF;
-			  background: #D0E4F5;
-			  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
-			  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
-			  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
-			  border-top: 2px solid #444444;
-			}
-			table.blueTable tfoot td {
-			  font-size: 8px;
-			}
-			table.blueTable tfoot .links {
-			  text-align: right;
-			}
-			table.blueTable tfoot .links a{
-			  display: inline-block;
-			  background: #1C6EA4;
-			  color: #FFFFFF;
-			  padding: 2px 8px;
-			  border-radius: 5px;
-			}
 		
 			
 			#map {
-		        height: 400px;  /* The height is 400 pixels */
+		        height: 1000px;  /* The height is 400 pixels */
 		        width: 100%;  /* The width is the width of the web page */
 		       }
+		       
+		  
 	</style>
 	
 </head>
 <body>
 	<center><B><h1>WEATHER FORECAST</h1></B></center>
-		 <a href="generate/excel.htm">Generate Excel</a>  
-		  <a href="generate/pdf.htm">Generate Pdf</a>  
-		 
-		
+	<!--
+		  <a href="generate/excel.htm">Generate Excel</a>  
+		  <a href="generate/pdf.htm">Generate Pdf    </a>  
+	
 		<a onclick="exportTableToExcel('excelTableData')">
 		<img alt="excel" src="assets/login/images/icons/excel.ico" align="right" width="50" height="50">
 		</a>
 		<input type="image" src="assets/login/images/icons/pdf.ico" align="right" width="50" height="50" id="btnExport" value="Export" />
-		
+	-->
+		<a href="generate/excel.htm">
+			<img alt="excel" src="assets/login/images/icons/excel.ico" align="right" width="50" height="50">
+		</a>
+		<a href="generate/pdf.htm">
+			<img alt="excel" src="assets/login/images/icons/pdf.ico" align="right" width="50" height="50">
+		</a>
 		
 		</h1>
 		<table class="blueTable" id="excelTableData">
@@ -112,32 +62,31 @@
 				<th>pressure</th>
 		</thead>
 		<tbody>
-			<c:forEach var="emp" items="${listEmp}" varStatus="status">
+			<c:forEach var="city" items="${cities}" varStatus="status">
 				<tr>
-					<td>${emp.id}</td>
-					<td>${emp.name}</td>
-					<td>${emp.temp}</td>
-					<td>${emp.tempMax}</td>
-					<td>${emp.tempMin}</td>
-					<td>${emp.humidity}</td>
-					<td>${emp.pressure}</td>
+					<td>${city.id}</td>
+					<td>${city.name}</td>
+					<td>${city.temp}</td>
+					<td>${city.tempMax}</td>
+					<td>${city.tempMin}</td>
+					<td>${city.humidity}</td>
+					<td>${city.pressure}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
-				
-			
 		</table>
 		
-		
-	<div id="map"></div>
+		<div id="map"></div>
+	
 	<script>
 	  var map;
 	  function initMap() {
 	    map = new google.maps.Map(
 	        document.getElementById('map'),
-	    {center: new google.maps.LatLng(38.020793, -121.887831), zoom: 8});
+	    {center: new google.maps.LatLng(38.020793, -121.887831), zoom: 4});
 
 	    var icons = {
+
 	            cloud: {
 	              icon: 'assets/login/images/icons/wfimg.ico', 
 	              
@@ -153,12 +102,18 @@
 	        };
 
 	          var features = [
+	        	/*  
+	        	  for (var i = 0; i < 13; i++) {
+	        		  position: new google.maps.LatLng(${city.lat}, ${city.lon}),
+		               type:${city.descr}  
+				    }
+	        	  */	  
 	            {
 	               position: new google.maps.LatLng(53.551086, 9.993682),
-	               type: 'rain'	               	               
+	               type:'sunny'
 	            }, {
 	               position: new google.maps.LatLng(50.110924, 8.682127),
-	               type: 'sunny'
+	               type:'sunny'
 	            }, {
 	               position: new google.maps.LatLng(52.520008, 13.404954),
 	               type: 'cloud'
@@ -203,7 +158,9 @@
 	    for (var i = 0; i < features.length; i++) {
 	      var marker = new google.maps.Marker({
 	        position: features[i].position,
-	        icon: icons[features[i].type].icon,
+	        icon: {url: icons[features[i].type].icon,
+        	scaledSize: new google.maps.Size(70, 70)},
+            
 	        map: map
 	      });
 	    };
@@ -214,11 +171,21 @@
 	
 	
 	
+<script type="text/javascript">
+	//datatable plugin
+	$(document).ready(function() {
+	    $('#excelTableData').DataTable();
+	    } 
+	);
+	</script>
 	
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 <script type="text/javascript">
+//pdf converter with javascript
     $("body").on("click", "#btnExport", function () {
         html2canvas($('#excelTableData')[0], {
             onrendered: function (canvas) {
@@ -236,6 +203,7 @@
 </script>
 		
 <script type="text/javascript">
+//excel converter with javascript
 function exportTableToExcel(tableID, filename = ''){
     var downloadLink;
     var dataType = 'application/vnd.ms-excel';

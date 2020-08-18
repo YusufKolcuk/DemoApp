@@ -16,8 +16,9 @@ public class City {
 	private Double tempMin;
 	private Double humidity;
 	private Double pressure;
-	private Long key;
-	
+	private Double lat;
+	private Double lon;
+	private String descr;
 	
 	
 	
@@ -63,17 +64,36 @@ public class City {
 	public void setPressure(Double pressure) {
 		this.pressure = pressure;
 	}
-	public Long getKey() {
-		return key;
+	public Double getLat() {
+		return lat;
 	}
-	public void setKey(Long key) {
-		this.key = key;
+	public void setLat(Double lat) {
+		this.lat = lat;
+	}
+	public Double getLon() {
+		return lon;
+	}
+	public void setLon(Double lon) {
+		this.lon = lon;
+	}
+	
+	public String getDesc() {
+		return descr;
+	}
+	public void setDesc(String descr) {
+		this.descr = descr;
 	}
 	@Override
 	public String toString() {
 		return "City [id=" + id + ", name=" + name + ", temp=" + temp + ", tempMax=" + tempMax + ", tempMin=" + tempMin
-				+ ", humidity=" + humidity + ", pressure=" + pressure + ", key=" + key + "]";
+				+ ", humidity=" + humidity + ", pressure=" + pressure + ", lat=" + lat + ", lon=" + lon + ", descr="
+				+ descr + "]";
 	}
+
+	
+	
+	
+	
 	
 
 	
