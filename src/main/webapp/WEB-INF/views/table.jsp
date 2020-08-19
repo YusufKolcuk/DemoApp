@@ -1,3 +1,5 @@
+<%@page import="com.xperta.service.CitiesService"%>
+<%@page import="java.util.ArrayList"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -84,6 +86,22 @@
 		<div id="map"></div>
 	
 	<script>
+		
+		<%
+		
+			ArrayList list=((ArrayList) request.getAttribute("cities"));
+		
+			for(int i=0;i<list.size();i++){
+				response.getWriter().print("City " + i +":"+((ArrayList) request.getAttribute("cities")).get(i).toString()+"\n");
+				/*ArrayList list2=   (ArrayList)list.get(0);
+				String lat=(String)list2.get(7);
+				String lon=(String)list2.get(8);
+				System.out.print("lat "+ lat+" lon "+lon);
+			*/
+			}
+			//response.getWriter().print(((ArrayList) request.getAttribute("cities")).get(0).toString());
+			
+		%>
 	  var map;
 	  function initMap() {
 	    map = new google.maps.Map(
@@ -107,14 +125,14 @@
 	        };
 
 	          var features = [
-	        	/*  
+	        	
 	        	  for (var i = 0; i < 13; i++) {
 	        		  position: new google.maps.LatLng(${city.lat}, ${city.lon}),
 		               type:${city.descr}  
 				    }
-	        	  */	  
+	        		  
 	            {
-	               position: new google.maps.LatLng(53.551086, 9.993682),
+	               position: new google.maps.LatLng(citz.get.993682),
 	               type:'sunny'
 	            }, {
 	               position: new google.maps.LatLng(50.110924, 8.682127),

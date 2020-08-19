@@ -30,7 +30,7 @@ public class PDFJService {
 	
 	public String jasperReport(String jasperReport) throws FileNotFoundException, JRException {
 		
-		String path = "C:\\Users\\user\\Desktop\\Report";
+		String path = System.getenv("temp");
 		List<City> citys=citiesService.getAllCities();
 		File file=ResourceUtils.getFile("classpath:cities.jrxml");
 		JasperReport jasReport=JasperCompileManager.compileReport(file.getAbsolutePath());
