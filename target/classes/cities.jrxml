@@ -8,11 +8,11 @@
 	</field>
 	<field name="temp" class="java.lang.Double">
 	</field>
-	<field name="tempMax" class="java.sql.Double">
+	<field name="tempMax" class="java.lang.Double">
 	</field>
-	<field name="tempMin" class="java.sql.Double">
+	<field name="tempMin" class="java.lang.Double">
 	</field>
-	<field name="humidity" class="java.sql.Double">
+	<field name="humidity" class="java.lang.Double">
 	</field>
 	<field name="pressure" class="java.lang.Double">
 	</field>
@@ -118,7 +118,7 @@
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="eb8b6942-aada-410c-b855-441340ff7e5f"/>
 			</line>
-			<textField textAdjust="StretchHeight">
+			<textField isStretchWithOverflow="true">
 				<reportElement x="0" y="0" width="79" height="20" uuid="83ceba6a-485b-456b-906c-7cead7dca19d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="db8ffe78-25f0-4c4f-867d-35e4927b6bee"/>
 				</reportElement>
@@ -127,7 +127,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField isStretchWithOverflow="true">
 				<reportElement x="79" y="0" width="79" height="20" uuid="790f5bff-bbb9-4be4-a0e2-5203ecc458c4">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ab88129f-61e0-4535-a7ad-2a9385696c45"/>
 				</reportElement>
@@ -136,7 +136,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField isStretchWithOverflow="true">
 				<reportElement x="158" y="0" width="79" height="20" uuid="12e810a2-1a05-4bed-9628-f4dc838f7728">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="94864f70-5505-4f5c-b4b5-5aee69df608c"/>
 				</reportElement>
@@ -145,7 +145,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField isStretchWithOverflow="true">
 				<reportElement x="237" y="0" width="79" height="20" uuid="9ce4cf26-354c-414f-8754-8f70a4f1964d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3d123f67-88f4-4bd5-b4cd-ced421d388d7"/>
 				</reportElement>
@@ -154,7 +154,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tempMax}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField isStretchWithOverflow="true">
 				<reportElement x="316" y="0" width="79" height="20" uuid="b19654ee-6d6d-410e-9dc2-3077b92211be">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e3f8c8d8-f925-461f-bf33-f761463476f0"/>
 				</reportElement>
@@ -163,7 +163,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tempMin}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField isStretchWithOverflow="true">
 				<reportElement x="395" y="0" width="79" height="20" uuid="3339d1ef-889b-4668-b553-fcf44a65168c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d9240f53-7936-4fd9-9024-d4f3d427782b"/>
 				</reportElement>
@@ -172,7 +172,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{humidity}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField isStretchWithOverflow="true">
 				<reportElement x="474" y="0" width="79" height="20" uuid="f5de214e-4659-4e80-a0ba-394b0984f0cb">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f683ce9b-879b-49f7-b731-164109944798"/>
 				</reportElement>

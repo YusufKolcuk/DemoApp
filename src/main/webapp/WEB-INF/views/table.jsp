@@ -42,12 +42,17 @@
 		<img alt="excel" src="assets/login/images/icons/excel.ico" align="right" width="50" height="50">
 		</a>
 		<input type="image" src="assets/login/images/icons/pdf.ico" align="right" width="50" height="50" id="btnExport" value="Export" />
+		
+		itext pdf
+			<a href="generate/pdf.htm">
+			<img alt="excel" src="assets/login/images/icons/pdf.ico" align="right" width="50" height="50">
+		</a>
 	-->
 		<a href="generate/excel.htm">
 			<img alt="excel" src="assets/login/images/icons/excel.ico" align="right" width="50" height="50">
 		</a>
-		<a href="generate/pdf.htm">
-			<img alt="excel" src="assets/login/images/icons/pdf.ico" align="right" width="50" height="50">
+		<a href="table/pdf">
+			<img alt="pdf" src="assets/login/images/icons/pdf.ico" align="right" width="50" height="50">
 		</a>
 		
 		</h1>

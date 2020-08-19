@@ -41,12 +41,11 @@
 			<version>1.0.2.Final</version>
 		</dependency>
 
-		<!-- jasper pdf converter -->
 		<!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
 		<dependency>
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
-			<version>6.14.0</version>
+			<version>4.6.0</version>
 		</dependency>
 
 
