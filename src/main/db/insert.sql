@@ -1,7 +1,7 @@
 
--- This file generates demoapp db on postgres
+insert into cities(id) values (3120501);
 
 
-drop db demoapp if exists
 
-create user demouser 
+
+
