@@ -24,10 +24,11 @@ echo DIR: %DIR%
 echo.
 
 
+
 SET PGPASSWORD=%MANAGEMENT_PASSWORD%
 
 echo closing active connections
-psql -h %HOST% -p %PORT% -U %MANAGEMENT_USER% -c "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = '%DB%' AND pid <> pg_backend_pid();"
+"C:\Program Files\PostgreSQL\12\bin\psql.exe" -h %HOST% -p %PORT% -U %MANAGEMENT_USER% -c "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = '%DB%' AND pid <> pg_backend_pid();"
 
 (    
     echo DROP DATABASE IF EXISTS "%DB%";
@@ -39,14 +40,14 @@ psql -h %HOST% -p %PORT% -U %MANAGEMENT_USER% -c "SELECT pg_terminate_backend(pg
     echo ALTER ROLE "%USER%" SET search_path = 'demoapp';
     echo \q
     
-)  |  psql -h %HOST% -p %PORT% -U %MANAGEMENT_USER% -v ON_ERROR_STOP=1
+)  |  "C:\Program Files\PostgreSQL\12\bin\psql.exe" -h %HOST% -p %PORT% -U %MANAGEMENT_USER% -v ON_ERROR_STOP=1
 if not %errorlevel%==0 goto error
 
 
 SET PGPASSWORD=%PASSWORD%
-psql -w -h %HOST% -d %DB% -U %USER% -v usr=%USER% -v ON_ERROR_STOP=1 -f schemas.sql
-psql -w -h %HOST% -d %DB% -U %USER% -v usr=%USER% -v ON_ERROR_STOP=1 -f tables.sql
-psql -w -h %HOST% -d %DB% -U %USER% -v usr=%USER% -v ON_ERROR_STOP=1 -f insert.sql
+"C:\Program Files\PostgreSQL\12\bin\psql.exe" -w -h %HOST% -d %DB% -U %USER% -v usr=%USER% -v ON_ERROR_STOP=1 -f %DIR%/schemas.sql
+"C:\Program Files\PostgreSQL\12\bin\psql.exe" -w -h %HOST% -d %DB% -U %USER% -v usr=%USER% -v ON_ERROR_STOP=1 -f %DIR%/tables.sql
+"C:\Program Files\PostgreSQL\12\bin\psql.exe" -w -h %HOST% -d %DB% -U %USER% -v usr=%USER% -v ON_ERROR_STOP=1 -f %DIR%/insert.sql
 if not %errorlevel%==0 goto error
 
 
