@@ -25,7 +25,7 @@ public class HomeController {
 	 @Autowired
 	 PDFJService pdfService;
 
-	//Yusuf Kolcuk 2
+	//Yusuf Kolcuk 3
 	private static final Logger Log=LoggerFactory.getLogger(HomeController.class);
 	public static String url = "http://localhost:8080/core/";
 	@Autowired

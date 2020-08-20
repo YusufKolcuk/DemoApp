@@ -18,7 +18,7 @@ import com.xperta.entity.User;
 import com.xperta.service.CitiesService;
 import com.xperta.service.UserService;
 
-//Cem Kucuk 5
+//Cem Kucuk 6
 @Controller
 public class LoginController {
 
