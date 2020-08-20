@@ -1,4 +1,6 @@
+<%@page import="com.xperta.entity.City"%>
 <%@page import="com.xperta.service.CitiesService"%>
+<%@page import="java.util.ArrayList"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -66,6 +68,7 @@
 				<th>temp_min</th>
 				<th>humidity</th>
 				<th>pressure</th>
+				<th>Add/Remove</th>
 		</thead>
 		<tbody>
 			<c:forEach var="city" items="${cities}" varStatus="status">
@@ -77,6 +80,10 @@
 					<td>${city.tempMin}</td>
 					<td>${city.humidity}</td>
 					<td>${city.pressure}</td>
+					<td>
+						<button type="button" class="btn btn-success">+</button>
+						<button type="button" class="btn btn-danger">-</button>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -87,8 +94,61 @@
 	<script>
 		
 		<%
-			CitiesService citiesService = new CitiesService();
-			response.getWriter().print("java deneme"+citiesService.getAllCities().size());
+			String city1,city2,city3,city4,city5,city6,city7,city8,city9,city10,city11,city12,city13;
+			String lat1,lat2,lat3,lat4,lat5,lat6,lat7,lat8,lat9,lat10,lat11,lat12,lat13;
+			String lon1,lon2,lon3,lon4,lon5,lon6,lon7,lon8,lon9,lon10,lon11,lon12,lon13;
+						
+			ArrayList<City> list=((ArrayList<City>) request.getAttribute("cities"));
+			
+			city1=list.get(0).getDesc().toString();
+			city2=list.get(1).getDesc().toString();
+			city3=list.get(2).getDesc().toString();
+			city4=list.get(3).getDesc().toString();
+			city5=list.get(4).getDesc().toString();
+			city6=list.get(5).getDesc().toString();
+			city7=list.get(6).getDesc().toString();
+			city8=list.get(7).getDesc().toString();
+			city9=list.get(8).getDesc().toString();
+			city10=list.get(9).getDesc().toString();
+			city11=list.get(10).getDesc().toString();
+			city12=list.get(11).getDesc().toString();
+			city13=list.get(12).getDesc().toString();
+			
+			lat1=list.get(0).getLat().toString();
+			lat2=list.get(1).getLat().toString();
+			lat3=list.get(2).getLat().toString();
+			lat4=list.get(3).getLat().toString();
+			lat5=list.get(4).getLat().toString();
+			lat6=list.get(5).getLat().toString();
+			lat7=list.get(6).getLat().toString();
+			lat8=list.get(7).getLat().toString();
+			lat9=list.get(8).getLat().toString();
+			lat10=list.get(9).getLat().toString();
+			lat11=list.get(10).getLat().toString();
+			lat12=list.get(11).getLat().toString();
+			lat13=list.get(12).getLat().toString();
+			
+			lon1=list.get(0).getLon().toString();
+			lon2=list.get(1).getLon().toString();
+			lon3=list.get(2).getLon().toString();
+			lon4=list.get(3).getLon().toString();
+			lon5=list.get(4).getLon().toString();
+			lon6=list.get(5).getLon().toString();
+			lon7=list.get(6).getLon().toString();
+			lon8=list.get(7).getLon().toString();
+			lon9=list.get(8).getLon().toString();
+			lon10=list.get(9).getLon().toString();
+			lon11=list.get(10).getLon().toString();
+			lon12=list.get(11).getLon().toString();
+			lon13=list.get(12).getLon().toString();
+			
+
+			for(int i=0;i<list.size();i++){
+				System.out.print(list.get(i).getDesc()+"\n");
+				//response.getWriter().print("City " + i +":"+((ArrayList) request.getAttribute("cities")).get(i).toString()+"\n");
+			
+			}
+			
 		%>
 	  var map;
 	  function initMap() {
@@ -98,69 +158,110 @@
 
 	    var icons = {
 
-	            cloud: {
+	    		  Clouds: {
 	              icon: 'assets/login/images/icons/wfimg.ico', 
 	              
-	            },
-	            sunny: {
+	              },
+	              Clear: {
 	                icon: 'assets/login/images/icons/sunny.ico', 
 	                
 	              },
-	            rain: {
+	              Rain: {
 	                icon: 'assets/login/images/icons/rainn.ico', 
 	                
 	              },
+	              Snow: {
+		                icon: 'assets/login/images/icons/rainn.ico', 
+		                
+		              },
+	              Drizzle: {
+		                icon: 'assets/login/images/icons/rainn.ico', 
+		                
+		              },
+	              Thunderstorm: {
+		                icon: 'assets/login/images/icons/rainn.ico', 
+		                
+		              },
+	              Mist: {
+		                icon: 'assets/login/images/icons/rainn.ico', 
+		                
+		              },
+	              Smoke: {
+		                icon: 'assets/login/images/icons/rainn.ico', 
+		                
+		              },
+	              Haze: {
+		                icon: 'assets/login/images/icons/rainn.ico', 
+		                
+		              },
+	              Ash: {
+		                icon: 'assets/login/images/icons/rainn.ico', 
+		                
+		              },
+	              Dust: {
+		                icon: 'assets/login/images/icons/rainn.ico', 
+		                
+		              },
+	              Fog: {
+		                icon: 'assets/login/images/icons/rainn.ico', 
+		                
+		              },
+	              Sand: {
+		                icon: 'assets/login/images/icons/rainn.ico', 
+		                
+		              },
+	              Squall: {
+		                icon: 'assets/login/images/icons/rainn.ico', 
+		                
+		              },
+	              Dust: {
+		                icon: 'assets/login/images/icons/rainn.ico', 
+		                
+		              },
 	        };
+	    
 
-	          var features = [
-	        	/*  
-	        	  for (var i = 0; i < 13; i++) {
-	        		  position: new google.maps.LatLng(${city.lat}, ${city.lon}),
-		               type:${city.descr}  
-				    }
-	        	  */	  
+	
+	          var features = [	  
 	            {
-	               position: new google.maps.LatLng(53.551086, 9.993682),
-	               type:'sunny'
+	        	   position: new google.maps.LatLng(<%=lat1%>, <%=lon1%>),
+	               type:'<%=city1%>'
 	            }, {
-	               position: new google.maps.LatLng(50.110924, 8.682127),
-	               type:'sunny'
+	               position: new google.maps.LatLng(<%=lat2%>, <%=lon2%>),
+	               type:'<%=city2%>'
 	            }, {
-	               position: new google.maps.LatLng(52.520008, 13.404954),
-	               type: 'cloud'
+	               position: new google.maps.LatLng(<%=lat3%>, <%=lon3%>),
+	               type: '<%=city3%>'
 	            }, {
-	               position: new google.maps.LatLng(48.856613, 2.352222),
-	               type: 'cloud'
+	               position: new google.maps.LatLng(<%=lat4%>, <%=lon4%>),
+	               type: '<%=city4%>'
 	            }, {
-	               position: new google.maps.LatLng(47.218372, -1.553621),
-	               type: 'rain'
+	               position: new google.maps.LatLng(<%=lat5%>, <%=lon5%>),
+	               type: '<%=city5%>'
 	            }, {
-	               position: new google.maps.LatLng(40.249540, -3.827210),
-	               type: 'cloud'
+	               position: new google.maps.LatLng(<%=lat6%>, <%=lon6%>),
+	               type: '<%=city6%>'
 	            }, {
-	               position: new google.maps.LatLng(41.385063, 2.173404),
-	               type: 'cloud'
+	               position: new google.maps.LatLng(<%=lat7%>, <%=lon7%>),
+	               type: '<%=city7%>'
 	            }, {
-	               position: new google.maps.LatLng(30.267153, -97.743057),
-	               type: 'sunny'
+	               position: new google.maps.LatLng(<%=lat8%>, <%=lon8%>),
+	               type: '<%=city8%>'
 	           	}, {
-	               position: new google.maps.LatLng(38.892062, -77.019912),
-	               type: 'cloud'
+	               position: new google.maps.LatLng(<%=lat9%>, <%=lon9%>),
+	               type: '<%=city9%>'
 	            }, {
-	               position: new google.maps.LatLng(39.951061, -75.16562),
-	               type: 'rain'
+	               position: new google.maps.LatLng(<%=lat10%>, <%=lon10%>),
+	               type: '<%=city10%>'
 	            }, {
-	               position: new google.maps.LatLng(39.960339, -76.734668),
-	               type: 'sunny'
+	               position: new google.maps.LatLng(<%=lat11%>, <%=lon11%>),
+	               type: '<%=city11%>'
 	            },{
-	               position: new google.maps.LatLng(37.128849, -84.083677),
-	               type: 'rain'
+	               position: new google.maps.LatLng(<%=lat12%>, <%=lon12%>),
+	               type: '<%=city12%>'
 	            }, {
-	               position: new google.maps.LatLng(33.545948, 33.545948),
-	               type: 'sunny'
-	            },{
-	               position: new google.maps.LatLng(41.673037, -72.945791),
-	               type: 'cloud'
+	               position: new google.maps.LatLng(<%=lat13%>, <%=lon13%>),
+	               type: '<%=city13%>'
 	            }
 	           
 	          ];
