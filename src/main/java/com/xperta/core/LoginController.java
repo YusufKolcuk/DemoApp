@@ -18,7 +18,7 @@ import com.xperta.entity.User;
 import com.xperta.service.CitiesService;
 import com.xperta.service.UserService;
 
-// GIT TEST 4!
+//Cem Kucuk 9
 @Controller
 public class LoginController {
 
