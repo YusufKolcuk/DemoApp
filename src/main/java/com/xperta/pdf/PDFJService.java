@@ -32,7 +32,7 @@ public class PDFJService {
 		
 		String path = System.getenv("temp");
 		List<City> citys=citiesService.getAllCities();
-		File file=ResourceUtils.getFile("classpath:cities.jrxml");
+		File file=ResourceUtils.getFile("classpath:jasper/cities.jrxml");
 		JasperReport jasReport=JasperCompileManager.compileReport(file.getAbsolutePath());
 		JRAbstractBeanDataSource dataSource = new JRBeanCollectionDataSource(citys);
 		Map<String,Object> param=new HashMap<>();
