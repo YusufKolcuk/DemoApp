@@ -2,6 +2,8 @@
 
 import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -46,6 +48,15 @@ public class HomeController {
 		return model;
 	}
 	
+
+	//delete datatable row 
+	@RequestMapping(value="/delete/{id}")
+	public String RowDelete(@PathVariable("id") Long city_id, Map<String, Object> map){
+ 		citiesService.delete(city_id);
+ 		 return "redirect:/table";
+	}
+	
+	
 	@RequestMapping(value = "/error_404", method = RequestMethod.GET)
 	public String error_404(Model model) {
 		
@@ -67,6 +78,6 @@ public class HomeController {
 	  return "redirect:/table";
 	 }
 	
-
+	 
 	
 }

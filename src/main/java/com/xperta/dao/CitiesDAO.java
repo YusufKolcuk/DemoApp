@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -26,6 +27,9 @@ public class CitiesDAO {
 	public void persist(City city){
 		sessionFactory.getCurrentSession().persist(city);
 	}
+	public void delete(Long city_id) {
+		sessionFactory.getCurrentSession().delete(city_id);
+	}
 	
 	
 	
@@ -34,6 +38,9 @@ public class CitiesDAO {
 		
 			return (ArrayList<City>) query.getResultList();	
 	}
+	
+	
+	
 	
 	public ArrayList<City> getAllName(){
 		Query query = sessionFactory.getCurrentSession().createQuery("select name FROM City");
