@@ -1,4 +1,5 @@
 \echo ========================= Creating Tables ==============================
+SET SEARCH_PATH TO demoapp;
 
 CREATE TABLE cities (
     id				bigint NOT NULL,
