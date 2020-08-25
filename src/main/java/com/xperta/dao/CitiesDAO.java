@@ -27,10 +27,18 @@ public class CitiesDAO {
 	public void persist(City city){
 		sessionFactory.getCurrentSession().persist(city);
 	}
-	public void delete(Long city_id) {
-		sessionFactory.getCurrentSession().delete(city_id);
+ 	
+ 	public void delete(City city_id) {
+	sessionFactory.getCurrentSession().delete(city_id);
 	}
+ 	
+	public City getfindId(Long id) {
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM City where id=:id");
+		return (City) query.getSingleResult();
 	
+	}
+  
+ 
 	
 	
 	public ArrayList<City> getAllId(){

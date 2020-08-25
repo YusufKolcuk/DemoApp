@@ -37,10 +37,17 @@ public class CitiesService {
 		 citiesDAO.persist(city);
 	}
 	
-	@Transactional
-	public void delete(Long city_id){
+	 @Transactional
+	public Long delete(City city_id){
 		 citiesDAO.delete(city_id);
+		 return 1l;
 	}
+	
+	public City getFindId(Long id) {
+		return citiesDAO.getfindId(id);
+	}
+	 
+	 
 
 	public ArrayList<City> getAllName(){
 		 return citiesDAO.getAllName();

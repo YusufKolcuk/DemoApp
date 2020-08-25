@@ -50,11 +50,13 @@ public class HomeController {
 	
 
 	//delete datatable row 
-	@RequestMapping(value="/delete/{id}")
-	public String RowDelete(@PathVariable("id") Long city_id, Map<String, Object> map){
- 		citiesService.delete(city_id);
+	@RequestMapping(value="table/delete/{id}")
+	public String RowDelete(@PathVariable("id") Long city_id){
+		City  city=citiesService.getFindId(city_id);
+ 		citiesService.delete(city);
  		 return "redirect:/table";
 	}
+	
 	
 	
 	@RequestMapping(value = "/error_404", method = RequestMethod.GET)

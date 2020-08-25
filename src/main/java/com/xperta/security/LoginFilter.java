@@ -69,7 +69,7 @@ public class LoginFilter implements Filter {
 			chain.doFilter(request, response);
 			return;
 		}
-		if(req.getRequestURI().contains("table/delete")){
+		if(req.getRequestURI().contains("table/delete/")){
 			chain.doFilter(request, response);
 			return;
 		}
