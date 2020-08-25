@@ -22,6 +22,9 @@
 	<link rel="stylesheet" type="text/css" href="assets/login/css/util.css">
 	<link rel="stylesheet" type="text/css" href="assets/login/css/main.css">
 	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	
+	
 	<style type="text/css">
 			
 		
@@ -68,11 +71,15 @@
 				<th>temp_min</th>
 				<th>humidity</th>
 				<th>pressure</th>
-				<th>Add/Remove</th>
+				<th>Action</th>
 		</thead>
 		<tbody>
-			<c:forEach var="city" items="${cities}" varStatus="status">
-				<tr>
+			<c:set var="count" value="0" scope="page" />
+			<c:forEach var="city" items="${cities}" varStatus="status" >
+				
+				<c:set var="count" value="${count + 1}" scope="page"/>
+				
+				<tr id="rec-${count}">
 					<td>${city.id}</td>
 					<td>${city.name}</td>
 					<td>${city.temp}</td>
@@ -80,9 +87,10 @@
 					<td>${city.tempMin}</td>
 					<td>${city.humidity}</td>
 					<td>${city.pressure}</td>
+					
 					<td>
-						<button type="button" class="btn btn-success">+</button>
-						<button type="button" class="btn btn-danger">-</button>
+					<a  class="btn btn-xs delete-record"  data-id="${count}"><i class="glyphicon glyphicon-trash"></i></a>
+					<a href="<c:url value='/table/delete/${city.id}' />">delete</a>
 					</td>
 				</tr>
 			</c:forEach>
@@ -296,6 +304,31 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+
+<script type="text/javascript">
+	//datatable delete row 
+	jQuery(document).delegate('a.delete-record', 'click', function(e) {
+	     e.preventDefault();    
+	     var didConfirm = confirm("Are you sure You want to delete");
+	     if (didConfirm == true) {
+	      var id = jQuery(this).attr('data-id');
+	      var targetDiv = jQuery(this).attr('targetDiv');
+	      jQuery('#rec-' + id).remove();
+	      
+	    //regnerate index number on table
+	    $('#tbl_posts_body tr').each(function(index) {
+	      //alert(index);
+	      $(this).find('span.sn').html(index+1);
+	    });
+	    return true;
+	  } else {
+	    return false;
+	  }
+	});
+
+</script>
+
 <script type="text/javascript">
 //pdf converter with javascript
     $("body").on("click", "#btnExport", function () {
