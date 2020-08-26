@@ -38,6 +38,8 @@ public class PDFJService {
 		Map<String,Object> param=new HashMap<>();
 		param.put("Weather Forecast", getRandomString());
 		JasperPrint jasperPrint=JasperFillManager.fillReport(jasReport, param,dataSource);
+		
+		//TODO: pdf created under temp but not written to response ..
 		if(jasperReport.equalsIgnoreCase("pdf")) {
 			JasperExportManager.exportReportToPdfFile(jasperPrint,path+"\\cities.pdf");
 		}
