@@ -52,7 +52,7 @@
 				<reportElement mode="Opaque" x="0" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="9d5f5750-5963-42fd-be86-d8eb70ece518">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="db8ffe78-25f0-4c4f-867d-35e4927b6bee"/>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[id]]></text>
@@ -61,7 +61,7 @@
 				<reportElement mode="Opaque" x="79" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="aeb7f143-4963-4af0-a50f-4135cae2418a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ab88129f-61e0-4535-a7ad-2a9385696c45"/>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[name]]></text>
@@ -70,7 +70,7 @@
 				<reportElement mode="Opaque" x="158" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="5546928d-3eb2-46e8-9d38-aff48b8759dd">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="94864f70-5505-4f5c-b4b5-5aee69df608c"/>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[temp]]></text>
@@ -79,7 +79,7 @@
 				<reportElement mode="Opaque" x="237" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="87c12b52-5439-4cec-b46a-a4f9c8294a13">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3d123f67-88f4-4bd5-b4cd-ced421d388d7"/>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[tempMax]]></text>
@@ -88,7 +88,7 @@
 				<reportElement mode="Opaque" x="316" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="42ab6d69-4d26-48a5-bd87-62eeecb14067">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e3f8c8d8-f925-461f-bf33-f761463476f0"/>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[tempMin]]></text>
@@ -97,7 +97,7 @@
 				<reportElement mode="Opaque" x="395" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="31dd6e0d-37d6-499d-8871-485e04c103fb">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d9240f53-7936-4fd9-9024-d4f3d427782b"/>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[humidity]]></text>
@@ -106,7 +106,7 @@
 				<reportElement mode="Opaque" x="474" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d008da89-b4d9-45a9-a1b8-9b97c32a6d1f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f683ce9b-879b-49f7-b731-164109944798"/>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[pressure]]></text>

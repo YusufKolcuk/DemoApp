@@ -33,7 +33,8 @@ public class CitiesDAO {
 	}
  	
 	public City getfindId(Long id) {
-		Query query = sessionFactory.getCurrentSession().createQuery("FROM City where id=:id");
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM City WHERE id=:id")
+				.setLong("id", id);
 		return (City) query.getSingleResult();
 	
 	}

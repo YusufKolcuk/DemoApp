@@ -43,7 +43,7 @@ public class CitiesService {
 		 return 1l;
 	}
 	
-	public City getFindId(Long id) {
+	public City getCityById(Long id) {
 		return citiesDAO.getfindId(id);
 	}
 	 

@@ -29,11 +29,21 @@
 			
 		
 			
-			#map {
-		        height: 1000px;  /* The height is 400 pixels */
-		        width: 100%;  /* The width is the width of the web page */
-		       }
+			
 		       
+		    .frame {
+				  width: 1200px;
+				  height: 800px;
+				  border: 10px solid #ccc;
+				  background: #eee;
+				  margin: auto;
+				  padding: 15px 10px;
+			},
+			#map {
+		        height: 100%;  /* The height is 400 pixels */
+		        width: 100%;  /* The width is the width of the web page */
+		       },
+						       
 		  
 	</style>
 	
@@ -54,14 +64,15 @@
 			<img alt="excel" src="assets/login/images/icons/pdf.ico" align="right" width="50" height="50">
 		</a>
 	-->
-		<a href="generate/excel.htm">
+		${user.name} ${user.surname} WELCOME PAGE <a href="logout">Logout</a>
+		<a href="generate/excel.xls">
 			<img alt="excel" src="assets/login/images/icons/excel.ico" align="right" width="50" height="50">
 		</a>
 		<a href="table/pdf">
 			<img alt="pdf" src="assets/login/images/icons/pdf.ico" align="right" width="50" height="50">
 		</a>
 		
-		</h1>
+		
 		<table class="blueTable" id="excelTableData">
 		<thead>
 				<th>id</th>
@@ -90,14 +101,14 @@
 					
 					<td>
 					<a  class="btn btn-xs delete-record"  data-id="${count}"><i class="glyphicon glyphicon-trash"></i></a>
-					<a href="<c:url value='/table/delete/${city.id}' />">delete</a>
+					<!--  <a href="<c:url value='/table/delete/${city.id}' />">delete</a>  -->
 					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 		</table>
 		
-		<div id="map"></div>
+		<div class="frame" id="map"></div>
 	
 	<script>
 		
@@ -107,48 +118,19 @@
 			String lon1,lon2,lon3,lon4,lon5,lon6,lon7,lon8,lon9,lon10,lon11,lon12,lon13;
 						
 			ArrayList<City> list=((ArrayList<City>) request.getAttribute("cities"));
+			ArrayList<String> city_list_des=new ArrayList();
+			ArrayList<String> city_list_lat=new ArrayList();
+			ArrayList<String> city_list_lon=new ArrayList();
 			
-			city1=list.get(0).getDesc().toString();
-			city2=list.get(1).getDesc().toString();
-			city3=list.get(2).getDesc().toString();
-			city4=list.get(3).getDesc().toString();
-			city5=list.get(4).getDesc().toString();
-			city6=list.get(5).getDesc().toString();
-			city7=list.get(6).getDesc().toString();
-			city8=list.get(7).getDesc().toString();
-			city9=list.get(8).getDesc().toString();
-			city10=list.get(9).getDesc().toString();
-			city11=list.get(10).getDesc().toString();
-			city12=list.get(11).getDesc().toString();
-			city13=list.get(12).getDesc().toString();
-			
-			lat1=list.get(0).getLat().toString();
-			lat2=list.get(1).getLat().toString();
-			lat3=list.get(2).getLat().toString();
-			lat4=list.get(3).getLat().toString();
-			lat5=list.get(4).getLat().toString();
-			lat6=list.get(5).getLat().toString();
-			lat7=list.get(6).getLat().toString();
-			lat8=list.get(7).getLat().toString();
-			lat9=list.get(8).getLat().toString();
-			lat10=list.get(9).getLat().toString();
-			lat11=list.get(10).getLat().toString();
-			lat12=list.get(11).getLat().toString();
-			lat13=list.get(12).getLat().toString();
-			
-			lon1=list.get(0).getLon().toString();
-			lon2=list.get(1).getLon().toString();
-			lon3=list.get(2).getLon().toString();
-			lon4=list.get(3).getLon().toString();
-			lon5=list.get(4).getLon().toString();
-			lon6=list.get(5).getLon().toString();
-			lon7=list.get(6).getLon().toString();
-			lon8=list.get(7).getLon().toString();
-			lon9=list.get(8).getLon().toString();
-			lon10=list.get(9).getLon().toString();
-			lon11=list.get(10).getLon().toString();
-			lon12=list.get(11).getLon().toString();
-			lon13=list.get(12).getLon().toString();
+			for(int i=0;i<list.size();i++){
+				city_list_des.add(list.get(i).getDesc().toString());
+			}
+			for(int i=0;i<list.size();i++){
+				city_list_lat.add(list.get(i).getLat().toString());
+			}
+			for(int i=0;i<list.size();i++){
+				city_list_lon.add(list.get(i).getLon().toString());
+			}
 			
 
 			for(int i=0;i<list.size();i++){
@@ -162,7 +144,7 @@
 	  function initMap() {
 	    map = new google.maps.Map(
 	        document.getElementById('map'),
-	    {center: new google.maps.LatLng(38.020793, -121.887831), zoom: 4});
+	    {center: new google.maps.LatLng(51.260197, 4.402771), zoom: 4});
 
 	    var icons = {
 
@@ -232,45 +214,53 @@
 	
 	          var features = [	  
 	            {
-	        	   position: new google.maps.LatLng(<%=lat1%>, <%=lon1%>),
-	               type:'<%=city1%>'
-	            }, {
-	               position: new google.maps.LatLng(<%=lat2%>, <%=lon2%>),
-	               type:'<%=city2%>'
-	            }, {
-	               position: new google.maps.LatLng(<%=lat3%>, <%=lon3%>),
-	               type: '<%=city3%>'
-	            }, {
-	               position: new google.maps.LatLng(<%=lat4%>, <%=lon4%>),
-	               type: '<%=city4%>'
-	            }, {
-	               position: new google.maps.LatLng(<%=lat5%>, <%=lon5%>),
-	               type: '<%=city5%>'
-	            }, {
-	               position: new google.maps.LatLng(<%=lat6%>, <%=lon6%>),
-	               type: '<%=city6%>'
-	            }, {
-	               position: new google.maps.LatLng(<%=lat7%>, <%=lon7%>),
-	               type: '<%=city7%>'
-	            }, {
-	               position: new google.maps.LatLng(<%=lat8%>, <%=lon8%>),
-	               type: '<%=city8%>'
-	           	}, {
-	               position: new google.maps.LatLng(<%=lat9%>, <%=lon9%>),
-	               type: '<%=city9%>'
-	            }, {
-	               position: new google.maps.LatLng(<%=lat10%>, <%=lon10%>),
-	               type: '<%=city10%>'
-	            }, {
-	               position: new google.maps.LatLng(<%=lat11%>, <%=lon11%>),
-	               type: '<%=city11%>'
-	            },{
-	               position: new google.maps.LatLng(<%=lat12%>, <%=lon12%>),
-	               type: '<%=city12%>'
-	            }, {
-	               position: new google.maps.LatLng(<%=lat13%>, <%=lon13%>),
-	               type: '<%=city13%>'
-	            }
+	        	   position: new google.maps.LatLng(<%=city_list_lat.get(0)%>, <%=city_list_lon.get(0)%>),
+	               type:'<%=city_list_des.get(0)%>'
+	            },
+	            {
+		        	   position: new google.maps.LatLng(<%=city_list_lat.get(1)%>, <%=city_list_lon.get(1)%>),
+		               type:'<%=city_list_des.get(1)%>'
+		            },
+	            {
+		        	   position: new google.maps.LatLng(<%=city_list_lat.get(2)%>, <%=city_list_lon.get(2)%>),
+		               type:'<%=city_list_des.get(2)%>'
+		            },
+	            {
+		        	   position: new google.maps.LatLng(<%=city_list_lat.get(3)%>, <%=city_list_lon.get(3)%>),
+		               type:'<%=city_list_des.get(3)%>'
+		            },
+	            {
+		        	   position: new google.maps.LatLng(<%=city_list_lat.get(4)%>, <%=city_list_lon.get(4)%>),
+		               type:'<%=city_list_des.get(4)%>'
+		            },
+	            {
+		        	   position: new google.maps.LatLng(<%=city_list_lat.get(5)%>, <%=city_list_lon.get(5)%>),
+		               type:'<%=city_list_des.get(5)%>'
+		            }
+	            ,{
+		        	   position: new google.maps.LatLng(<%=city_list_lat.get(6)%>, <%=city_list_lon.get(6)%>),
+		               type:'<%=city_list_des.get(6)%>'
+		            }
+	            ,{
+		        	   position: new google.maps.LatLng(<%=city_list_lat.get(7)%>, <%=city_list_lon.get(7)%>),
+		               type:'<%=city_list_des.get(7)%>'
+		            }
+	            ,{
+		        	   position: new google.maps.LatLng(<%=city_list_lat.get(8)%>, <%=city_list_lon.get(8)%>),
+		               type:'<%=city_list_des.get(8)%>'
+		            }
+	            ,{
+		        	   position: new google.maps.LatLng(<%=city_list_lat.get(9)%>, <%=city_list_lon.get(9)%>),
+		               type:'<%=city_list_des.get(9)%>'
+		            }
+	            ,{
+		        	   position: new google.maps.LatLng(<%=city_list_lat.get(10)%>, <%=city_list_lon.get(10)%>),
+		               type:'<%=city_list_des.get(10)%>'
+		            }
+	            ,{
+		        	   position: new google.maps.LatLng(<%=city_list_lat.get(11)%>, <%=city_list_lon.get(11)%>),
+		               type:'<%=city_list_des.get(11)%>'
+		            }
 	           
 	          ];
 
@@ -279,7 +269,7 @@
 	      var marker = new google.maps.Marker({
 	        position: features[i].position,
 	        icon: {url: icons[features[i].type].icon,
-        	scaledSize: new google.maps.Size(70, 70)},
+        	scaledSize: new google.maps.Size(40, 40)},
             
 	        map: map
 	      });

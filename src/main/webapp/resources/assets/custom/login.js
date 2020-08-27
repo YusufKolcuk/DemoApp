@@ -14,7 +14,7 @@ function loginBtn(){
 		data:ser_data,
 		success:function(data){
 			if(data=='OK'){
-				$(location).attr('href', '/core/home')
+				$(location).attr('href', '/core/table')
 
 			}
 			else if(data=='ERROR'){

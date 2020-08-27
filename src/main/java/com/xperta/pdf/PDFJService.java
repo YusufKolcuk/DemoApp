@@ -2,15 +2,24 @@ package com.xperta.pdf;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
+import org.springframework.web.servlet.view.document.AbstractPdfView;
 
+import com.lowagie.text.Document;
+import com.lowagie.text.pdf.PdfWriter;
+import com.lowagie.text.pdf.codec.Base64.OutputStream;
 import com.xperta.entity.City;
 import com.xperta.service.CitiesService;
 
@@ -24,11 +33,11 @@ import net.sf.jasperreports.engine.data.JRAbstractBeanDataSource;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @Service
-public class PDFJService {
+public class PDFJService{
 	@Autowired
 	public CitiesService citiesService;
 	
-	public String jasperReport(String jasperReport) throws FileNotFoundException, JRException {
+	public String jasperReport(String jasperReport,HttpServletResponse response) throws JRException, IOException {
 		
 		String path = System.getenv("temp");
 		List<City> citys=citiesService.getAllCities();
@@ -39,7 +48,13 @@ public class PDFJService {
 		param.put("Weather Forecast", getRandomString());
 		JasperPrint jasperPrint=JasperFillManager.fillReport(jasReport, param,dataSource);
 		if(jasperReport.equalsIgnoreCase("pdf")) {
-			JasperExportManager.exportReportToPdfFile(jasperPrint,path+"\\cities.pdf");
+			//JasperExportManager.exportReportToPdfFile(jasperPrint,path+"\\cities.pdf");
+			//response.setContentType("application/x-download");
+			response.addHeader("Content-disposition", "attachment; filename=report.pdf");			
+			ServletOutputStream servletOutputStream=response.getOutputStream();  
+			   JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);  
+			   servletOutputStream.flush();
+			   servletOutputStream.close(); 
 		}
 	
 		return "report generated in path : " + path;
@@ -50,6 +65,8 @@ public class PDFJService {
 		// TODO Auto-generated method stub
 		return UUID.randomUUID().toString();
 	}
+
+
 	
 
 }

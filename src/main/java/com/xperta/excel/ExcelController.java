@@ -20,7 +20,7 @@ public class ExcelController {
  @Autowired
  CitiesService citiesService;
  
- @RequestMapping(value = "/generate/excel.htm", method = RequestMethod.GET)
+ @RequestMapping(value = "/generate/excel.xls", method = RequestMethod.GET)
  ModelAndView generateExcel(HttpServletRequest request,HttpServletResponse response) throws Exception {
 	  System.out.println("Calling generateExcel()...");
 	  List<City> cities = citiesService.getAllCities();    

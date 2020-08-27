@@ -1,10 +1,11 @@
  package com.xperta.core;
 
-import java.io.FileNotFoundException;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.xperta.entity.City;
 import com.xperta.pdf.PDFJService;
 import com.xperta.service.CitiesService;
@@ -39,26 +41,26 @@ public class HomeController {
 		return "home";
 	}
 	@RequestMapping(value = "/table")
-	public ModelAndView  table(ModelAndView  model,HttpServletRequest req) {
+	public ModelAndView  table(Model mdl,ModelAndView  model,HttpServletRequest req) {
+		mdl.addAttribute("user",req.getSession().getAttribute("user"));
 		List<City> cities = citiesService.getAllCities();
 		model.addObject("cities", cities);
 		model.setViewName("table");
 		Log.info("trial 1 ");
 		
 		return model;
-	}
-	
+	}	
 
 	//delete datatable row 
 	@RequestMapping(value="table/delete/{id}")
 	public String RowDelete(@PathVariable("id") Long city_id){
-		City  city=citiesService.getFindId(city_id);
- 		citiesService.delete(city);
- 		 return "redirect:/table";
+		City  city=citiesService.getCityById(city_id);
+		if(city != null) {
+			citiesService.delete(city);	
+		}
+ 		 return "error_404";
 	}
-	
-	
-	
+
 	@RequestMapping(value = "/error_404", method = RequestMethod.GET)
 	public String error_404(Model model) {
 		
@@ -75,8 +77,10 @@ public class HomeController {
 	 
 	 
 	 @RequestMapping(value = "/table/{format}")
-	 public String generatePdfJasper(@PathVariable String format) throws FileNotFoundException,JRException {
-		 pdfService.jasperReport(format);
+	 public String generatePdfJasper(@PathVariable String format, HttpServletRequest request,
+				HttpServletResponse response) throws JRException, IOException {
+		 pdfService.jasperReport(format,response);
+		 
 	  return "redirect:/table";
 	 }
 	

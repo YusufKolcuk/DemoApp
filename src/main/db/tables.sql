@@ -9,7 +9,6 @@ CREATE TABLE cities (
     tempmax			double precision,
     pressure		double precision,
     humidity		double precision,
-    key				bigint,
     descr			character varying(255),
     lat				double precision,
     lon				double precision
@@ -30,3 +29,15 @@ CREATE TABLE usertable (
 	username		character varying(255)
 );
 ALTER TABLE usertable OWNER TO :usr;
+
+
+CREATE TABLE role (
+    id	            bigint NOT NULL,
+	name			character varying(255)
+);
+ALTER TABLE role OWNER TO :usr;
+
+CREATE TABLE user_roles (
+    usr_id	        bigint,
+	role_id			bigint
+);
