@@ -27,10 +27,6 @@
 	
 	<style type="text/css">
 			
-		
-			
-			
-		       
 		    .frame {
 				  width: 1200px;
 				  height: 800px;
@@ -43,6 +39,7 @@
 		        height: 100%;  /* The height is 400 pixels */
 		        width: 100%;  /* The width is the width of the web page */
 		       },
+		      
 						       
 		  
 	</style>
@@ -71,8 +68,10 @@
 		<a href="table/pdf">
 			<img alt="pdf" src="assets/login/images/icons/pdf.ico" align="right" width="50" height="50">
 		</a>
+		<br>
+		<input type="number" name="addRow" id="addRow" style="border:1px solid #003bd1" >
 		
-		
+		<button onclick="searchURL()"><i class="glyphicon glyphicon-cloud"></i></button>
 		<table class="blueTable" id="excelTableData">
 		<thead>
 				<th>id</th>
@@ -100,8 +99,8 @@
 					<td>${city.pressure}</td>
 					
 					<td>
-					<a  class="btn btn-xs delete-record"  data-id="${count}"><i class="glyphicon glyphicon-trash"></i></a>
-					<!--  <a href="<c:url value='/table/delete/${city.id}' />">delete</a>  -->
+				<!--  	<a  class="btn btn-xs delete-record"  data-id="${count}"><i class="glyphicon glyphicon-trash"></i></a>    -->
+					<a href="<c:url value='/table/delete/${city.id}' />"><i class="glyphicon glyphicon-trash"></i></a> 
 					</td>
 				</tr>
 			</c:forEach>
@@ -210,60 +209,18 @@
 		              },
 	        };
 	    
-
+	    var features = [];
+	    
+	    <%  for( int j=0; j<list.size(); j++) { %>
+	  		 features.push(
+	      	        	{
+	      	        		position: new google.maps.LatLng(<%=city_list_lat.get(j)%>, <%=city_list_lon.get(j)%>),
+	      		            type:'<%=city_list_des.get(j)%>'
+	      	        	}	  
+	      	          )
+	  		<% } %>
 	
-	          var features = [	  
-	            {
-	        	   position: new google.maps.LatLng(<%=city_list_lat.get(0)%>, <%=city_list_lon.get(0)%>),
-	               type:'<%=city_list_des.get(0)%>'
-	            },
-	            {
-		        	   position: new google.maps.LatLng(<%=city_list_lat.get(1)%>, <%=city_list_lon.get(1)%>),
-		               type:'<%=city_list_des.get(1)%>'
-		            },
-	            {
-		        	   position: new google.maps.LatLng(<%=city_list_lat.get(2)%>, <%=city_list_lon.get(2)%>),
-		               type:'<%=city_list_des.get(2)%>'
-		            },
-	            {
-		        	   position: new google.maps.LatLng(<%=city_list_lat.get(3)%>, <%=city_list_lon.get(3)%>),
-		               type:'<%=city_list_des.get(3)%>'
-		            },
-	            {
-		        	   position: new google.maps.LatLng(<%=city_list_lat.get(4)%>, <%=city_list_lon.get(4)%>),
-		               type:'<%=city_list_des.get(4)%>'
-		            },
-	            {
-		        	   position: new google.maps.LatLng(<%=city_list_lat.get(5)%>, <%=city_list_lon.get(5)%>),
-		               type:'<%=city_list_des.get(5)%>'
-		            }
-	            ,{
-		        	   position: new google.maps.LatLng(<%=city_list_lat.get(6)%>, <%=city_list_lon.get(6)%>),
-		               type:'<%=city_list_des.get(6)%>'
-		            }
-	            ,{
-		        	   position: new google.maps.LatLng(<%=city_list_lat.get(7)%>, <%=city_list_lon.get(7)%>),
-		               type:'<%=city_list_des.get(7)%>'
-		            }
-	            ,{
-		        	   position: new google.maps.LatLng(<%=city_list_lat.get(8)%>, <%=city_list_lon.get(8)%>),
-		               type:'<%=city_list_des.get(8)%>'
-		            }
-	            ,{
-		        	   position: new google.maps.LatLng(<%=city_list_lat.get(9)%>, <%=city_list_lon.get(9)%>),
-		               type:'<%=city_list_des.get(9)%>'
-		            }
-	            ,{
-		        	   position: new google.maps.LatLng(<%=city_list_lat.get(10)%>, <%=city_list_lon.get(10)%>),
-		               type:'<%=city_list_des.get(10)%>'
-		            }
-	            ,{
-		        	   position: new google.maps.LatLng(<%=city_list_lat.get(11)%>, <%=city_list_lon.get(11)%>),
-		               type:'<%=city_list_des.get(11)%>'
-		            }
-	           
-	          ];
-
+	    
 	// Create markers.
 	    for (var i = 0; i < features.length; i++) {
 	      var marker = new google.maps.Marker({
@@ -287,6 +244,13 @@
 	    $('#excelTableData').DataTable();
 	    } 
 	);
+	
+	
+	
+	var input = document.getElementById("addRow");
+	function searchURL() {
+	     window.location = "table/add/"+input.value;
+	}
 	</script>
 	
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -316,6 +280,7 @@
 	    return false;
 	  }
 	});
+
 
 </script>
 

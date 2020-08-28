@@ -33,7 +33,7 @@
 				<staticText>
 					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="cb41e6ed-a022-44c1-b84d-16a864244844"/>
 					<textElement textAlignment="Right">
-						<font size="14" isBold="false"/>
+						<font size="8" isBold="false"/>
 					</textElement>
 					<text><![CDATA[Reports]]></text>
 				</staticText>
@@ -53,7 +53,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="db8ffe78-25f0-4c4f-867d-35e4927b6bee"/>
 				</reportElement>
 				<textElement>
-					<font size="14" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[id]]></text>
 			</staticText>
@@ -62,7 +62,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ab88129f-61e0-4535-a7ad-2a9385696c45"/>
 				</reportElement>
 				<textElement>
-					<font size="14" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[name]]></text>
 			</staticText>
@@ -71,7 +71,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="94864f70-5505-4f5c-b4b5-5aee69df608c"/>
 				</reportElement>
 				<textElement>
-					<font size="14" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[temp]]></text>
 			</staticText>
@@ -80,7 +80,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3d123f67-88f4-4bd5-b4cd-ced421d388d7"/>
 				</reportElement>
 				<textElement>
-					<font size="14" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[tempMax]]></text>
 			</staticText>
@@ -89,7 +89,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e3f8c8d8-f925-461f-bf33-f761463476f0"/>
 				</reportElement>
 				<textElement>
-					<font size="14" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[tempMin]]></text>
 			</staticText>
@@ -98,7 +98,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d9240f53-7936-4fd9-9024-d4f3d427782b"/>
 				</reportElement>
 				<textElement>
-					<font size="14" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[humidity]]></text>
 			</staticText>
@@ -107,7 +107,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f683ce9b-879b-49f7-b731-164109944798"/>
 				</reportElement>
 				<textElement>
-					<font size="14" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[pressure]]></text>
 			</staticText>
@@ -123,7 +123,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="db8ffe78-25f0-4c4f-867d-35e4927b6bee"/>
 				</reportElement>
 				<textElement>
-					<font size="14"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
@@ -132,7 +132,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ab88129f-61e0-4535-a7ad-2a9385696c45"/>
 				</reportElement>
 				<textElement>
-					<font size="14"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
@@ -141,7 +141,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="94864f70-5505-4f5c-b4b5-5aee69df608c"/>
 				</reportElement>
 				<textElement>
-					<font size="14"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp}]]></textFieldExpression>
 			</textField>
@@ -150,7 +150,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3d123f67-88f4-4bd5-b4cd-ced421d388d7"/>
 				</reportElement>
 				<textElement>
-					<font size="14"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tempMax}]]></textFieldExpression>
 			</textField>
@@ -159,7 +159,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e3f8c8d8-f925-461f-bf33-f761463476f0"/>
 				</reportElement>
 				<textElement>
-					<font size="14"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tempMin}]]></textFieldExpression>
 			</textField>
@@ -168,7 +168,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d9240f53-7936-4fd9-9024-d4f3d427782b"/>
 				</reportElement>
 				<textElement>
-					<font size="14"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{humidity}]]></textFieldExpression>
 			</textField>
@@ -177,7 +177,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f683ce9b-879b-49f7-b731-164109944798"/>
 				</reportElement>
 				<textElement>
-					<font size="14"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pressure}]]></textFieldExpression>
 			</textField>

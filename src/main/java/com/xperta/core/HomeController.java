@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.xperta.entity.City;
 import com.xperta.pdf.PDFJService;
+import com.xperta.quartz.jobs.ReportCurrentTime;
 import com.xperta.service.CitiesService;
 
 import net.sf.jasperreports.engine.JRException;
@@ -58,9 +59,29 @@ public class HomeController {
 		if(city != null) {
 			citiesService.delete(city);	
 		}
- 		 return "error_404";
+ 		 return "redirect:/table";
 	}
 
+	//delete datatable row 
+	@RequestMapping(value="table/add/{id}")
+	public String RowAdd(@PathVariable("id") Long city_id){
+		City addCity=new City();
+		addCity.setId(city_id);
+		addCity.setName("Loading");
+		addCity.setDesc("Loading");
+		addCity.setLat(0.0);
+		addCity.setLon(0.0);
+		addCity.setTemp(0.0);
+		addCity.setTempMax(0.0);
+		addCity.setTempMin(0.0);
+		addCity.setHumidity(0.0);
+		addCity.setPressure(0.0);
+		citiesService.create(addCity);
+	
+ 		return "redirect:/table";
+	}
+	
+	
 	@RequestMapping(value = "/error_404", method = RequestMethod.GET)
 	public String error_404(Model model) {
 		

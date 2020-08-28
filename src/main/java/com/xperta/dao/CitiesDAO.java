@@ -38,7 +38,12 @@ public class CitiesDAO {
 		return (City) query.getSingleResult();
 	
 	}
-  
+	
+	public City addcityKey(Long id) {
+		Query query = sessionFactory.getCurrentSession().createQuery("Ýnsert into City (id) values id=:id");
+		return (City) query.getSingleResult();
+	}
+
  
 	
 	
