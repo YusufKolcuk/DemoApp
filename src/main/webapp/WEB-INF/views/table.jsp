@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="com.xperta.entity.User"%>
+<%@page import="com.xperta.service.UserService"%>
 <%@page import="com.xperta.entity.City"%>
 <%@page import="com.xperta.service.CitiesService"%>
 <%@page import="java.util.ArrayList"%>
@@ -45,7 +48,7 @@
 	</style>
 	
 </head>
-<body>
+<body onload="myFunction()">
 	<center><B><h1>WEATHER FORECAST</h1></B></center>
 	<!--
 		  <a href="generate/excel.htm">Generate Excel</a>  
@@ -61,7 +64,14 @@
 			<img alt="excel" src="assets/login/images/icons/pdf.ico" align="right" width="50" height="50">
 		</a>
 	-->
+	
 		${user.name} ${user.surname} WELCOME PAGE <a href="logout">Logout</a>
+
+		<%
+		User actId=(User)request.getSession().getAttribute("user");
+		String RoleId=actId.getName();
+		%>
+		<button>trial </button>
 		<a href="generate/excel.xls">
 			<img alt="excel" src="assets/login/images/icons/excel.ico" align="right" width="50" height="50">
 		</a>
@@ -69,9 +79,14 @@
 			<img alt="pdf" src="assets/login/images/icons/pdf.ico" align="right" width="50" height="50">
 		</a>
 		<br>
-		<input type="number" name="addRow" id="addRow" style="border:1px solid #003bd1" >
+		<%
+				
+				if(RoleId.equals("admin")){%>
+		<input	 name="addRow" id="addRow" style="border:1px solid #003bd1" >
 		
-		<button onclick="searchURL()"><i class="glyphicon glyphicon-cloud"></i></button>
+		<button  id="actionId" onclick="searchURL()"><i class="glyphicon glyphicon-cloud"></i></button>
+		
+		<%}	%>
 		<table class="blueTable" id="excelTableData">
 		<thead>
 				<th>id</th>
@@ -81,7 +96,12 @@
 				<th>temp_min</th>
 				<th>humidity</th>
 				<th>pressure</th>
+				<%
+				
+				if(RoleId.equals("admin")){%>
 				<th>Action</th>
+					<%}	%>
+					
 		</thead>
 		<tbody>
 			<c:set var="count" value="0" scope="page" />
@@ -97,11 +117,17 @@
 					<td>${city.tempMin}</td>
 					<td>${city.humidity}</td>
 					<td>${city.pressure}</td>
+					<%if(RoleId.equals("admin")){%>
 					
 					<td>
-				<!--  	<a  class="btn btn-xs delete-record"  data-id="${count}"><i class="glyphicon glyphicon-trash"></i></a>    -->
+					<!--  	<a  class="btn btn-xs delete-record"  data-id="${count}"><i class="glyphicon glyphicon-trash"></i></a>    -->
 					<a href="<c:url value='/table/delete/${city.id}' />"><i class="glyphicon glyphicon-trash"></i></a> 
 					</td>
+					<%}
+					
+					%>
+					
+				
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -259,6 +285,28 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 
+<script type="text/javascript">
+
+function myFunction() {
+	  var inputId = document.getElementById("actionId");
+	  var addBId = document.getElementById("addRow");
+	  <% String yusuf="admin";
+	 User usr=(User)request.getSession().getAttribute("user");
+	 
+	  System.out.print("cimbom"+ usr);
+	  String admin=usr.getName();
+	  System.out.print("bom"+ usr.getName());
+	  
+	  %>
+	  if("<%=admin%>"!="admin"){
+		  inputId.style.display = "none";
+		  addBId.style.display = "none";
+	  }
+	  
+	}
+</script>
+
+
 
 <script type="text/javascript">
 	//datatable delete row 
@@ -304,7 +352,7 @@
 		
 <script type="text/javascript">
 //excel converter with javascript
-function exportTableToExcel(tableID, filename = ''){
+function exportTableToExcel(tableID, filename = ""){
     var downloadLink;
     var dataType = 'application/vnd.ms-excel';
     var tableSelect = document.getElementById(tableID);

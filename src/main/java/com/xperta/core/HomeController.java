@@ -1,6 +1,5 @@
  package com.xperta.core;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -19,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.xperta.entity.City;
 import com.xperta.pdf.PDFJService;
-import com.xperta.quartz.jobs.ReportCurrentTime;
 import com.xperta.service.CitiesService;
 
 import net.sf.jasperreports.engine.JRException;
@@ -67,8 +65,8 @@ public class HomeController {
 	public String RowAdd(@PathVariable("id") Long city_id){
 		City addCity=new City();
 		addCity.setId(city_id);
-		addCity.setName("Loading");
-		addCity.setDesc("Loading");
+		addCity.setName("Waiting");
+		addCity.setDesc("Waiting");
 		addCity.setLat(0.0);
 		addCity.setLon(0.0);
 		addCity.setTemp(0.0);
@@ -76,6 +74,15 @@ public class HomeController {
 		addCity.setTempMin(0.0);
 		addCity.setHumidity(0.0);
 		addCity.setPressure(0.0);
+		/*
+		ArrayList<City>	keyVal=citiesService.getAllId();
+		for (City getKeyUniq : keyVal) {
+			if(getKeyUniq.equals(addCity.getId())) {
+				return "error_404";
+			}
+		}
+		*/
+		
 		citiesService.create(addCity);
 	
  		return "redirect:/table";
