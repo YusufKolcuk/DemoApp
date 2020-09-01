@@ -2,7 +2,7 @@
 SET SEARCH_PATH TO demoapp;
 
 CREATE TABLE cities (
-    id				bigint NOT NULL,
+    id				bigint NOT NULL UNIQUE,
     name			character varying(255),
     temp			double precision,
     tempmin			double precision,
@@ -18,7 +18,7 @@ ALTER TABLE cities OWNER TO :usr;
 
 
 CREATE TABLE usertable (
-    id	            bigint NOT NULL,
+    id	            BIGSERIAL,
     active        	boolean,
     create_date     timestamp without time zone,
     email      		character varying(255),
