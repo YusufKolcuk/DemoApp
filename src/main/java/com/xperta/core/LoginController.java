@@ -33,7 +33,6 @@ public class LoginController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(@RequestParam(value="status", required=false) String status, Model model) {
-		
 		userService.getAll().toString();
 		System.out.println(userService.getAll().toString());
 		if(status != null){

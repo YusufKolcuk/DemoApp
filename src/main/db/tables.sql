@@ -17,7 +17,7 @@ ALTER TABLE cities OWNER TO :usr;
 
 
 
-CREATE TABLE usertable (
+CREATE TABLE users (
     id	            BIGSERIAL,
     active        	boolean,
     create_date     timestamp without time zone,
@@ -28,14 +28,14 @@ CREATE TABLE usertable (
 	surname			character varying(255),
 	username		character varying(255)
 );
-ALTER TABLE usertable OWNER TO :usr;
+ALTER TABLE users OWNER TO :usr;
 
 
-CREATE TABLE role (
+CREATE TABLE roles (
     id	            bigint NOT NULL,
 	name			character varying(255)
 );
-ALTER TABLE role OWNER TO :usr;
+ALTER TABLE roles OWNER TO :usr;
 
 CREATE TABLE user_roles (
     usr_id	        bigint,

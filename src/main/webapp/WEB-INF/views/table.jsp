@@ -8,6 +8,13 @@
 <%@ page session="false" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
+<%
+		UserService usrService =  new UserService();
+		User usr=(User)request.getSession().getAttribute("user");
+		String RoleId=usr.getName();
+		
+%>
+		
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,12 +73,6 @@
 	-->
 	
 		${user.name} ${user.surname} WELCOME PAGE <a href="logout">Logout</a>
-
-		<%
-		User actId=(User)request.getSession().getAttribute("user");
-		String RoleId=actId.getName();
-		%>
-		<button>trial </button>
 		<a href="generate/excel.xls">
 			<img alt="excel" src="assets/login/images/icons/excel.ico" align="right" width="50" height="50">
 		</a>
@@ -79,14 +80,10 @@
 			<img alt="pdf" src="assets/login/images/icons/pdf.ico" align="right" width="50" height="50">
 		</a>
 		<br>
-		<%
-				
-				if(RoleId.equals("admin")){%>
-		<input	 name="addRow" id="addRow" style="border:1px solid #003bd1" >
-		
-		<button  id="actionId" onclick="searchURL()"><i class="glyphicon glyphicon-cloud"></i></button>
-		
-		<%}	%>
+		<% if(usrService.isAdmin(usr)) { %>
+				<input name="addRow" id="addRow" style="border:1px solid #003bd1" >
+				<button id="actionId" onclick="searchURL()"><i class="glyphicon glyphicon-cloud"></i> </button>
+		<%}%>
 		<table class="blueTable" id="excelTableData">
 		<thead>
 				<th>id</th>
@@ -96,11 +93,10 @@
 				<th>temp_min</th>
 				<th>humidity</th>
 				<th>pressure</th>
-				<%
-				
-				if(RoleId.equals("admin")){%>
+			
+			<% if(usrService.isAdmin(usr)) { %>
 				<th>Action</th>
-					<%}	%>
+			<%}%>
 					
 		</thead>
 		<tbody>
@@ -117,15 +113,13 @@
 					<td>${city.tempMin}</td>
 					<td>${city.humidity}</td>
 					<td>${city.pressure}</td>
-					<%if(RoleId.equals("admin")){%>
+					<%if( usrService.isAdmin(usr)) {%>
 					
 					<td>
 					<!--  	<a  class="btn btn-xs delete-record"  data-id="${count}"><i class="glyphicon glyphicon-trash"></i></a>    -->
 					<a href="<c:url value='/table/delete/${city.id}' />"><i class="glyphicon glyphicon-trash"></i></a> 
 					</td>
-					<%}
-					
-					%>
+					<%}%>
 					
 				
 				</tr>
@@ -291,7 +285,6 @@ function myFunction() {
 	  var inputId = document.getElementById("actionId");
 	  var addBId = document.getElementById("addRow");
 	  <% String yusuf="admin";
-	 User usr=(User)request.getSession().getAttribute("user");
 	 
 	  System.out.print("cimbom"+ usr);
 	  String admin=usr.getName();

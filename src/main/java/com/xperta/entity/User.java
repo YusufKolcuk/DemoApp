@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name="userTable")
+@Table(name="users")
 public class User {
 	
 	@Id
